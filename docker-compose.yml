@@ -2,9 +2,9 @@ version: "3"
 services:
   backend:
     container_name: "sushi-bai-kiyoshi"
-    image: ubuntu:18.04
+    image: python:3
     build: .
-    command: python3 app.py
+    command: python app.py
     ports:
       - "${PORT}:${PORT}"
     volumes:

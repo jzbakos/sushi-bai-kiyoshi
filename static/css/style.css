@@ -1,0 +1,13 @@
+body {
+  background: rgb(185, 183, 191);
+  background: linear-gradient(
+      0deg,
+      rgba(185, 183, 191, 1) 0%,
+      rgba(255, 255, 255, 1) 85%
+    )
+    fixed;
+}
+
+#navbar {
+  margin-bottom: 40px;
+}
