@@ -1,0 +1,15 @@
+version: "3"
+services:
+  backend:
+    container_name: "sushi-bai-kiyoshi"
+    image: ubuntu:18.04
+    build: .
+    command: python3 app.py
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - .:/srv/backend:rw
+    working_dir: /srv/backend
+
+volumes:
+  bsc-pgdata: {}
