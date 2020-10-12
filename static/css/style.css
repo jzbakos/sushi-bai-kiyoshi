@@ -16,6 +16,10 @@ body {
   text-align: center;
 }
 
+#logo:hover {
+  filter: brightness(90%);
+}
+
 #navbar {
   margin-bottom: 40px;
   min-height: 70px;
