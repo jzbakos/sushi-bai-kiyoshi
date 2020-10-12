@@ -1,12 +1,40 @@
 {% extends 'public/templates/base.html' %} {% block title %}Login{% endblock %}
-{% block body %}
+{% set active_page = "login" %} {% block body %}
 
-<div class="container">
+<div id="login-panel" class="container">
   <div class="row">
     <div class="col">
-      <h1 class="display-3">Login</h1>
+      <h1 class="display-3 center-title">Login</h1>
       <hr />
-      <p>Coming soon...</p>
+      <form>
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="loginEmail"
+            aria-describedby="emailHelp"
+            placeholder="Email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="loginPassword"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group text-center">
+          <button id="login-button" type="submit" class="btn btn-danger">
+            Login
+          </button>
+        </div>
+        <div class="form-group text-center">
+          <small>Don't have an account? <a href="/register">Register</a></small>
+        </div>
+      </form>
     </div>
   </div>
 </div>

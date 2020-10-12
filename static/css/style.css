@@ -1,13 +1,39 @@
 body {
-  background: rgb(185, 183, 191);
+  background: rgb(172, 171, 173);
   background: linear-gradient(
       0deg,
-      rgba(185, 183, 191, 1) 0%,
-      rgba(255, 255, 255, 1) 85%
+      rgb(172, 171, 173) 0%,
+      rgb(240, 240, 240) 85%
     )
     fixed;
 }
 
+.bg-dark-red {
+  background-color: rgb(134, 43, 46);
+}
+
+.center-title {
+  text-align: center;
+}
+
 #navbar {
   margin-bottom: 40px;
+  min-height: 70px;
+}
+
+#login-panel,
+#register-panel {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 5%;
+  min-width: 300px;
+  max-width: 20%;
+}
+
+#login-button,
+#register-button {
+  min-width: 200px;
+  width: 80%;
+  border-radius: 20px;
 }

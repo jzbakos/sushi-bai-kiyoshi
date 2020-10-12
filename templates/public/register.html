@@ -1,12 +1,49 @@
 {% extends 'public/templates/base.html' %} {% block title %}Register{% endblock
-%} {% block body %}
+%} {% set active_page = "Register" %} {% block body %}
 
-<div class="container">
+<div id="register-panel" class="container">
   <div class="row">
     <div class="col">
-      <h1 class="display-3">Register</h1>
+      <h1 class="display-3 center-title">Register</h1>
       <hr />
-      <p>Coming soon...</p>
+      <form>
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="registerEmail"
+            aria-describedby="emailHelp"
+            placeholder="Email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="registerPassword"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="registerConfirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="registerConfirmPassword"
+            placeholder="Confirm Password"
+          />
+        </div>
+        <div class="form-group text-center">
+          <button id="register-button" type="submit" class="btn btn-danger">
+            Register
+          </button>
+        </div>
+        <div class="form-group text-center">
+          <small>Already have an account? <a href="/login">Login</a></small>
+        </div>
+      </form>
     </div>
   </div>
 </div>
