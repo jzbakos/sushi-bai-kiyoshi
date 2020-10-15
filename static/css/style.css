@@ -1,15 +1,15 @@
 body {
-  background: rgb(172, 171, 173);
+  background: rgb(185, 185, 185);
   background: linear-gradient(
       0deg,
-      rgb(172, 171, 173) 0%,
-      rgb(240, 240, 240) 85%
+      rgb(185, 185, 185) 0%,
+      rgb(247, 247, 247) 85%
     )
     fixed;
 }
 
 .bg-dark-red {
-  background-color: rgb(134, 43, 46);
+  background-color: rgb(161, 48, 54);
 }
 
 .center-title {
@@ -21,6 +21,7 @@ body {
 }
 
 #navbar {
+  border-bottom: 5px rgb(129, 39, 44) solid;
   margin-bottom: 40px;
   min-height: 70px;
 }
