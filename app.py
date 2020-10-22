@@ -34,6 +34,6 @@ def login():
     return render_template("public/login.html")
 
 
-port = os.environ["PORT"]
-# port = 5000
+# port = os.environ["PORT"]
+port = 5000
 app.run(host="0.0.0.0", port=port)

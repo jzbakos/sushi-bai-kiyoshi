@@ -1,16 +1,18 @@
 {% extends 'public/templates/base.html' %} {% block title %}Home{% endblock %}
 {% set active_page = "home" %} {% block body %}
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1 class="display-3">Welcome</h1>
-      <hr />
-      <p>
-        This is the official website for <strong>Sushi Bai Kiyoshi</strong>!
-      </p>
+<div class="container-fluid" id="big-img-container">
+  <div class="container">
+    <div class="row">
+      <div class="col" style="padding: 0">
+        <h1 class="display-4 center-title">Welcome</h1>
+        <hr />
+        <p>
+          This is the official website for <strong>Sushi Bai Kiyoshi</strong>!
+        </p>
+      </div>
     </div>
   </div>
-</div>
 
-{% endblock %}
+  {% endblock %}
+</div>

@@ -1,4 +1,9 @@
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   background: rgb(185, 185, 185);
   background: linear-gradient(
       0deg,
@@ -6,6 +11,10 @@ body {
       rgb(247, 247, 247) 85%
     )
     fixed;
+}
+
+main {
+  height: 100%;
 }
 
 .bg-dark-red {
@@ -22,8 +31,26 @@ body {
 
 #navbar {
   border-bottom: 5px rgb(129, 39, 44) solid;
-  margin-bottom: 40px;
   min-height: 70px;
+}
+
+/* #big-img-container {
+  background: url("../../static/img/sushi-bg.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  margin: 0;
+  height: 100%;
+} */
+
+#big-img {
+  width: 100%;
+}
+
+#content-container {
+  text-align: center;
 }
 
 #login-panel,
@@ -33,7 +60,7 @@ body {
   padding: 20px;
   margin-top: 5%;
   min-width: 300px;
-  max-width: 20%;
+  max-width: 22%;
 }
 
 #login-button,
