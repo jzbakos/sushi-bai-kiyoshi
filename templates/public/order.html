@@ -4,46 +4,68 @@
 <div id="order-panel" class="container">
   <div class="row">
     <div class="col">
-      <h1 class="display-4 center-title">Order</h1>
+      <h1 class="display-4 center-title">Current Order</h1>
       <hr />
-      <form>
-        <div class="form-group">
-          <label for="registerEmail">Email</label>
-          <input
-            type="email"
-            class="form-control"
-            id="registerEmail"
-            aria-describedby="emailHelp"
-            placeholder="Email"
-          />
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card" style="width: 18rem">
+              <img
+                src="/static/img/sushi-bg.jpg"
+                class="card-img-top"
+                alt="image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Item Added To Order</h5>
+                <p class="card-text">
+                  Description of ingreditents and what type of sushi it is
+                </p>
+                <p class="card-text"><strong>$8.99</strong></p>
+                <a href="#" class="btn btn-primary">Remove</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card" style="width: 18rem">
+              <img
+                src="/static/img/sushi-bg.jpg"
+                class="card-img-top"
+                alt="image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Item Added To Order</h5>
+                <p class="card-text">
+                  Description of ingreditents and what type of sushi it is
+                </p>
+                <p class="card-text"><strong>$8.99</strong></p>
+                <a href="#" class="btn btn-primary">Remove</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card" style="width: 18rem">
+              <img
+                src="/static/img/sushi-bg.jpg"
+                class="card-img-top"
+                alt="image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Item Added To Order</h5>
+                <p class="card-text">
+                  Description of ingreditents and what type of sushi it is
+                </p>
+                <p class="card-text"><strong>$8.99</strong></p>
+                <a href="#" class="btn btn-primary">Remove</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="registerPassword">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="registerPassword"
-            placeholder="Password"
-          />
-        </div>
-        <div class="form-group">
-          <label for="registerConfirmPassword">Confirm Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="registerConfirmPassword"
-            placeholder="Confirm Password"
-          />
-        </div>
-        <div class="form-group text-center">
-          <button id="register-button" type="submit" class="btn btn-danger">
-            Register
-          </button>
-        </div>
-        <div class="form-group text-center">
-          <small>Already have an account? <a href="/login">Login</a></small>
-        </div>
-      </form>
+      </div>
+
+      <hr />
+      <h3>Order Total: $26.97</h3>
+      <button type="button" class="btn btn-primary">Proceed To Payment</button>
     </div>
   </div>
 </div>
