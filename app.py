@@ -34,6 +34,18 @@ def login():
     return render_template("public/login.html")
 
 
+# Dashboard route
+@app.route("/dashboard")
+def dashboard():
+    return render_template("public/dashboard.html")
+
+
+# Profile route
+@app.route("/profile")
+def profile():
+    return render_template("public/profile.html")
+
+
 # port = os.environ["PORT"]
 port = 5000
 app.run(host="0.0.0.0", port=port)
