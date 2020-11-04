@@ -2,91 +2,161 @@
 {% set active_page = "menu" %} {% block body %}
 
 <div class="container">
-  <h1 class="display-3">Menu</h1>
-  <hr />
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem">
-        <img src="/static/img/sushi-bg.jpg" class="card-img-top" alt="image" />
-        <div class="card-body">
-          <h5 class="card-title">Some Good Sushi</h5>
-          <p class="card-text">
-            Description of ingreditents and what type of sushi it is
-          </p>
-          <p class="card-text"><strong>$8.99</strong></p>
-          <a href="#" class="btn btn-primary">Add to Order</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem">
-        <img src="/static/img/sushi-bg.jpg" class="card-img-top" alt="image" />
-        <div class="card-body">
-          <h5 class="card-title">Some Good Sushi</h5>
-          <p class="card-text">
-            Description of ingreditents and what type of sushi it is
-          </p>
-          <p class="card-text"><strong>$8.99</strong></p>
-          <a href="#" class="btn btn-primary">Add to Order</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem">
-        <img src="/static/img/sushi-bg.jpg" class="card-img-top" alt="image" />
-        <div class="card-body">
-          <h5 class="card-title">Some Good Sushi</h5>
-          <p class="card-text">
-            Description of ingreditents and what type of sushi it is
-          </p>
-          <p class="card-text"><strong>$8.99</strong></p>
-          <a href="#" class="btn btn-primary">Add to Order</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <h1 class="menu-title display-4">Nigiri</h1>
+  <hr class="menu-title-hr" />
+  <table id="menu-table" class="table table-sm table-hover">
+    <thead class="bg-danger">
+      <tr>
+        <th scope="col" style="width: 10%">Item</th>
+        <th scope="col" style="width: 60%">Description</th>
+        <th scope="col" style="width: 15%; text-align: center">Price ($)</th>
+        <th scope="col" style="width: 15%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-danger">
+        <td scope="row">Mark</td>
+        <td>Otto</td>
+        <td class="item-price">$9.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+      <tr class="table-danger">
+        <td scope="row">Jacob</td>
+        <td>Thornton</td>
+        <td class="item-price">$7.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+      <tr class="table-danger">
+        <td scope="row">Larry</td>
+        <td>the Bird</td>
+        <td class="item-price">$6.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem">
-        <img src="/static/img/sushi-bg.jpg" class="card-img-top" alt="image" />
-        <div class="card-body">
-          <h5 class="card-title">Some Good Sushi</h5>
-          <p class="card-text">
-            Description of ingreditents and what type of sushi it is
-          </p>
-          <p class="card-text"><strong>$8.99</strong></p>
-          <a href="#" class="btn btn-primary">Add to Order</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem">
-        <img src="/static/img/sushi-bg.jpg" class="card-img-top" alt="image" />
-        <div class="card-body">
-          <h5 class="card-title">Some Good Sushi</h5>
-          <p class="card-text">
-            Description of ingreditents and what type of sushi it is
-          </p>
-          <p class="card-text"><strong>$8.99</strong></p>
-          <a href="#" class="btn btn-primary">Add to Order</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem">
-        <img src="/static/img/sushi-bg.jpg" class="card-img-top" alt="image" />
-        <div class="card-body">
-          <h5 class="card-title">Some Good Sushi</h5>
-          <p class="card-text">
-            Description of ingreditents and what type of sushi it is
-          </p>
-          <p class="card-text"><strong>$8.99</strong></p>
-          <a href="#" class="btn btn-primary">Add to Order</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <h1 class="menu-title display-4">Sashimi</h1>
+  <hr class="menu-title-hr" />
+  <table id="menu-table" class="table table-sm table-hover">
+    <thead class="bg-danger">
+      <tr>
+        <th scope="col" style="width: 10%">Item</th>
+        <th scope="col" style="width: 60%">Description</th>
+        <th scope="col" style="width: 15%; text-align: center">Price ($)</th>
+        <th scope="col" style="width: 15%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-danger">
+        <td scope="row">Mark</td>
+        <td>Otto</td>
+        <td class="item-price">$9.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+      <tr class="table-danger">
+        <td scope="row">Jacob</td>
+        <td>Thornton</td>
+        <td class="item-price">$7.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+      <tr class="table-danger">
+        <td scope="row">Larry</td>
+        <td>the Bird</td>
+        <td class="item-price">$6.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1 class="menu-title display-4">Maki</h1>
+  <hr class="menu-title-hr" />
+  <table id="menu-table" class="table table-sm table-hover">
+    <thead class="bg-danger">
+      <tr>
+        <th scope="col" style="width: 10%">Item</th>
+        <th scope="col" style="width: 60%">Description</th>
+        <th scope="col" style="width: 15%; text-align: center">Price ($)</th>
+        <th scope="col" style="width: 15%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-danger">
+        <td scope="row">Mark</td>
+        <td>Otto</td>
+        <td class="item-price">$9.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+      <tr class="table-danger">
+        <td scope="row">Jacob</td>
+        <td>Thornton</td>
+        <td class="item-price">$7.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+      <tr class="table-danger">
+        <td scope="row">Larry</td>
+        <td>the Bird</td>
+        <td class="item-price">$6.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1 class="menu-title display-4">Tempura Rolls</h1>
+  <hr class="menu-title-hr" />
+  <table id="menu-table" class="table table-sm table-hover">
+    <thead class="bg-danger">
+      <tr>
+        <th scope="col" style="width: 10%">Item</th>
+        <th scope="col" style="width: 60%">Description</th>
+        <th scope="col" style="width: 15%; text-align: center">Price ($)</th>
+        <th scope="col" style="width: 15%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-danger">
+        <td scope="row">Mark</td>
+        <td>Otto</td>
+        <td class="item-price">$9.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+      <tr class="table-danger">
+        <td scope="row">Jacob</td>
+        <td>Thornton</td>
+        <td class="item-price">$7.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+      <tr class="table-danger">
+        <td scope="row">Larry</td>
+        <td>the Bird</td>
+        <td class="item-price">$6.99</td>
+        <td>
+          <button type="button" class="btn btn-light">Add To Order</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 {% endblock %}

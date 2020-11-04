@@ -69,3 +69,22 @@ main {
   width: 80%;
   border-radius: 20px;
 }
+
+.menu-title {
+  margin-top: 20px;
+  font-size: 40px;
+  margin-bottom: 5px;
+}
+
+.menu-title-hr {
+  margin-top: 0px;
+}
+
+#menu-table thead {
+  color: white;
+}
+
+.item-price {
+  text-align: center;
+  font-weight: bold;
+}
