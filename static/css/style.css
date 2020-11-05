@@ -82,9 +82,11 @@ main {
 
 #menu-table thead {
   color: white;
+  background-color: rgb(161, 48, 54);
 }
 
-.item-price {
+.item-price,
+.item-quantity {
   text-align: center;
   font-weight: bold;
 }

@@ -4,68 +4,60 @@
 <div id="order-panel" class="container">
   <div class="row">
     <div class="col">
-      <h1 class="display-4 center-title">Current Order</h1>
-      <hr />
+      <h1 class="menu-title display-4">Current Order</h1>
+      <hr class="menu-title-hr" />
+      <table id="menu-table" class="table table-sm table-hover">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 10%">Item</th>
+            <th scope="col" style="width: 65%">Description</th>
+            <th scope="col" style="width: 5%; text-align: center">Qty</th>
+            <th scope="col" style="width: 10%; text-align: center">
+              Price ($)
+            </th>
+            <th scope="col" style="width: 10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-danger">
+            <td scope="row">Mark</td>
+            <td>Otto</td>
+            <td class="item-quantity">1</td>
+            <td class="item-price">$9.99</td>
+            <td>
+              <button type="button" class="btn btn-light">Remove</button>
+            </td>
+          </tr>
+          <tr class="table-danger">
+            <td scope="row">Jacob</td>
+            <td>Thornton</td>
+            <td class="item-quantity">1</td>
+            <td class="item-price">$7.99</td>
+            <td>
+              <button type="button" class="btn btn-light">Remove</button>
+            </td>
+          </tr>
+          <tr class="table-danger">
+            <td scope="row">Larry</td>
+            <td>the Bird</td>
+            <td class="item-quantity">1</td>
+            <td class="item-price">$6.99</td>
+            <td>
+              <button type="button" class="btn btn-light">Remove</button>
+            </td>
+          </tr>
+          <tr class="table-danger">
+            <td colspan="4" style="text-align: right">
+              <h4>Total:</h4>
+            </td>
+            <td class="item-price"><h4>$24.97</h4></td>
+          </tr>
+        </tbody>
+      </table>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="card" style="width: 18rem">
-              <img
-                src="/static/img/sushi-bg.jpg"
-                class="card-img-top"
-                alt="image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Item Added To Order</h5>
-                <p class="card-text">
-                  Description of ingreditents and what type of sushi it is
-                </p>
-                <p class="card-text"><strong>$8.99</strong></p>
-                <a href="#" class="btn btn-primary">Remove</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="card" style="width: 18rem">
-              <img
-                src="/static/img/sushi-bg.jpg"
-                class="card-img-top"
-                alt="image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Item Added To Order</h5>
-                <p class="card-text">
-                  Description of ingreditents and what type of sushi it is
-                </p>
-                <p class="card-text"><strong>$8.99</strong></p>
-                <a href="#" class="btn btn-primary">Remove</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="card" style="width: 18rem">
-              <img
-                src="/static/img/sushi-bg.jpg"
-                class="card-img-top"
-                alt="image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Item Added To Order</h5>
-                <p class="card-text">
-                  Description of ingreditents and what type of sushi it is
-                </p>
-                <p class="card-text"><strong>$8.99</strong></p>
-                <a href="#" class="btn btn-primary">Remove</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <hr />
-      <h3>Order Total: $26.97</h3>
-      <button type="button" class="btn btn-primary">Proceed To Payment</button>
+      <button type="submit" class="btn btn-danger" style="float: right">
+        Checkout
+      </button>
     </div>
   </div>
 </div>
