@@ -6,7 +6,7 @@
     <div class="col">
       <h1 class="display-4 center-title">Login</h1>
       <hr />
-      <form>
+      <form method="POST">
         <div class="form-group">
           <label for="loginEmail">Email</label>
           <input
@@ -15,6 +15,9 @@
             id="loginEmail"
             aria-describedby="emailHelp"
             placeholder="Email"
+            value="{{ request.form.email }}"
+            name="email"
+            required
           />
         </div>
         <div class="form-group">
@@ -24,6 +27,9 @@
             class="form-control"
             id="loginPassword"
             placeholder="Password"
+            value="{{ request.form.password }}"
+            name="password"
+            required
           />
         </div>
         <div class="form-group text-center">
@@ -34,6 +40,10 @@
         <div class="form-group text-center">
           <small>Don't have an account? <a href="/register">Register</a></small>
         </div>
+
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}</p>
+        {% endif %}
       </form>
     </div>
   </div>

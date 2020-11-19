@@ -1,8 +1,8 @@
 from flask import Flask, render_template, url_for, request, redirect, jsonify
 import os
+import mysql.connector
 
 app = Flask(__name__)
-
 
 # Default route
 @app.route("/")
@@ -23,15 +23,36 @@ def order():
 
 
 # Register route
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    return render_template("public/register.html")
+    error = None
+    if request.method == "POST":
+        if register_user(
+            request.form["email"],
+            request.form["firstName"],
+            request.form["lastName"],
+            request.form["phoneNumber"],
+            request.form["password"],
+            request.form["passwordConfirm"],
+        ):
+            return redirect(url_for("index"))
+        else:
+            error = "User credentials are invalid. Try again."
+
+    return render_template("public/register.html", error=error)
 
 
 # Login route
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("public/login.html")
+    error = None
+    if request.method == "POST":
+        if authenticate_user(request.form["email"], request.form["password"]):
+            return redirect(url_for("index"))
+        else:
+            error = "User credentials are incorrect. Try again."
+
+    return render_template("public/login.html", error=error)
 
 
 # Dashboard route
@@ -44,6 +65,58 @@ def dashboard():
 @app.route("/profile")
 def profile():
     return render_template("public/profile.html")
+
+
+# Authenticate a user login attempt
+def authenticate_user(email, password):
+    db = mysql.connector.connect(
+        user="b6a23f430401bc",
+        password="4fdd2d42",
+        host="us-cdbr-east-02.cleardb.com",
+        database="heroku_a907c14370f5a87",
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * FROM users WHERE email_address = '%s'" % email)
+
+    myresult = cursor.fetchall()
+
+    # Check that passwords match
+    if myresult:
+        print("User found, checking password next...")
+        if myresult[0][5] == password:
+            print("Passwords match. Successful login!")
+            db.close()
+            return True
+        else:
+            print("Incorrect password.")
+            db.close()
+            return False
+    else:
+        print("User NOT found!")
+        db.close()
+        return False
+
+
+def register_user(email, firstName, lastName, phoneNumber, password, passwordConfirm):
+    db = mysql.connector.connect(
+        user="b6a23f430401bc",
+        password="4fdd2d42",
+        host="us-cdbr-east-02.cleardb.com",
+        database="heroku_a907c14370f5a87",
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        "INSERT INTO users (user_id, first_name, last_Name, email_address, phone_number, password, user_type)"
+        + "VALUES (NULL, %s, %s, %s, %s, %s, 'Regular');",
+        (firstName, lastName, email, phoneNumber, password),
+    )
+
+    db.commit()
+    db.close()
 
 
 port = os.environ["PORT"]

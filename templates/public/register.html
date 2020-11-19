@@ -6,7 +6,7 @@
     <div class="col">
       <h1 class="display-4 center-title">Register</h1>
       <hr />
-      <form>
+      <form method="POST">
         <div class="form-group">
           <label for="registerEmail">Email</label>
           <input
@@ -15,6 +15,41 @@
             id="registerEmail"
             aria-describedby="emailHelp"
             placeholder="Email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="registerFirstName">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="registerFirstName"
+            placeholder="First Name"
+            name="firstName"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="registerLastName">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="registerLastName"
+            placeholder="Last Name"
+            name="lastName"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="registerPhone">Phone Number</label>
+          <input
+            type="number"
+            class="form-control"
+            id="registerPhone"
+            placeholder="Phone #"
+            name="phoneNumber"
+            required
           />
         </div>
         <div class="form-group">
@@ -24,6 +59,8 @@
             class="form-control"
             id="registerPassword"
             placeholder="Password"
+            name="password"
+            required
           />
         </div>
         <div class="form-group">
@@ -33,6 +70,8 @@
             class="form-control"
             id="registerConfirmPassword"
             placeholder="Confirm Password"
+            name="passwordConfirm"
+            required
           />
         </div>
         <div class="form-group text-center">
