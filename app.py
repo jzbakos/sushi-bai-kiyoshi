@@ -13,6 +13,21 @@ def index():
 # Menu route
 @app.route("/menu")
 def menu():
+    db = mysql.connector.connect(
+        user="b6a23f430401bc",
+        password="4fdd2d42",
+        host="us-cdbr-east-02.cleardb.com",
+        database="heroku_a907c14370f5a87",
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * FROM menu_items")
+
+    myresult = cursor.fetchall()
+
+    for item in myresult:
+        print(item)
     return render_template("public/menu.html")
 
 
@@ -119,6 +134,6 @@ def register_user(email, firstName, lastName, phoneNumber, password, passwordCon
     db.close()
 
 
-port = os.environ["PORT"]
-# port = 5000
+# port = os.environ["PORT"]
+port = 5000
 app.run(host="0.0.0.0", port=port)
