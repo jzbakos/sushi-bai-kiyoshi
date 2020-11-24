@@ -1,12 +1,16 @@
-from flask import Flask, render_template, url_for, request, redirect, jsonify
+from flask import Flask, render_template, url_for, request, redirect, jsonify, session
 import os
 import mysql.connector
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
 
 # Default route
 @app.route("/")
 def index():
+    if session.get("user_id"):
+        print("HOME ID:", session.get("user_id"))
+
     return render_template("public/index.html")
 
 
@@ -22,16 +26,28 @@ def menu():
 
     cursor = db.cursor()
 
-    cursor.execute("SELECT * FROM menu_items")
+    cursor.execute("SELECT * FROM menu_items WHERE category = 'Maki'")
+    maki = cursor.fetchall()
 
-    myresult = cursor.fetchall()
+    cursor.execute("SELECT * FROM menu_items WHERE category = 'Nigiri'")
+    nigiri = cursor.fetchall()
 
-    for item in myresult:
-        print(item)
-    return render_template("public/menu.html")
+    cursor.execute("SELECT * FROM menu_items WHERE category = 'Sashimi'")
+    sashimi = cursor.fetchall()
+
+    cursor.execute("SELECT * FROM menu_items WHERE category = 'Tempura Rolls'")
+    tempura_rolls = cursor.fetchall()
+
+    return render_template(
+        "public/menu.html",
+        maki=maki,
+        nigiri=nigiri,
+        sashimi=sashimi,
+        tempura_rolls=tempura_rolls,
+    )
 
 
-# Order route
+# Order page route
 @app.route("/order")
 def order():
     return render_template("public/order.html")
@@ -70,10 +86,35 @@ def login():
     return render_template("public/login.html", error=error)
 
 
-# Dashboard route
+# Dashboard route(s)
 @app.route("/dashboard")
 def dashboard():
-    return render_template("public/dashboard.html")
+    return render_template("public/dashboard/overview.html")
+
+
+# Dashboard: order history route
+@app.route("/order_history")
+def order_history():
+    db = mysql.connector.connect(
+        user="b6a23f430401bc",
+        password="4fdd2d42",
+        host="us-cdbr-east-02.cleardb.com",
+        database="heroku_a907c14370f5a87",
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * FROM orders ORDER BY date_time_placed DESC")
+
+    myresult = cursor.fetchall()
+
+    return render_template("public/dashboard/order_history.html", myresult=myresult)
+
+
+# Dashboard: active orders route
+@app.route("/active_orders")
+def active_orders():
+    return render_template("public/dashboard/active_orders.html")
 
 
 # Profile route
@@ -102,6 +143,8 @@ def authenticate_user(email, password):
         print("User found, checking password next...")
         if myresult[0][5] == password:
             print("Passwords match. Successful login!")
+            print("USER ID:", myresult[0][0])
+            session["user_id"] = myresult[0][0]
             db.close()
             return True
         else:
@@ -114,6 +157,7 @@ def authenticate_user(email, password):
         return False
 
 
+# Register a user
 def register_user(email, firstName, lastName, phoneNumber, password, passwordConfirm):
     db = mysql.connector.connect(
         user="b6a23f430401bc",

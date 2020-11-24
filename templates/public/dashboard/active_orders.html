@@ -1,0 +1,36 @@
+{% extends 'public/dashboard/dashboard_base.html' %} {% block title %}Order
+History{% endblock %} {% set active_page = "order_history" %} {% block partial
+%}
+
+<h2>Active Orders</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Order #</th>
+        <th>Details</th>
+        <th>Last Name</th>
+        <th>Completed</th>
+        <th>Time placed</th>
+        <th>Time completed</th>
+        <th>User</th>
+        <th>Phone #</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% set count = [ ] %} {% set j = 0 %} {% for item in myresult %}
+      <tr>
+        <td>{{ myresult[count|length][j] }}</td>
+        <td>{{ myresult[count|length][j + 1] }}</td>
+        <td>{{ myresult[count|length][j + 2] }}</td>
+        <td>{{ myresult[count|length][j + 3] }}</td>
+        <td>{{ myresult[count|length][j + 4] }}</td>
+        <td>{{ myresult[count|length][j + 5] }}</td>
+        <td>{{ myresult[count|length][j + 6] }}</td>
+        <td>{{ myresult[count|length][j + 7] }}</td>
+      </tr>
+      {% set i = count.append(1) %} {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,17 +1,19 @@
 {% extends 'public/templates/base.html' %} {% block title %}Home{% endblock %}
 {% set active_page = "home" %} {% block body %}
 
-<div class="container-fluid" id="big-img-container">
-  <div class="container">
-    <div class="row">
-      <div class="col" style="padding: 0">
-        <h1 class="display-4 center-title">Welcome</h1>
-        <hr />
-        <p>
-          This is the official website for <strong>Sushi Bai Kiyoshi</strong>!
-        </p>
-      </div>
-    </div>
+<!-- <img src="../../static/img/sushithing.png" class="img-fluid" alt="Responsive image"> -->
+
+<header class="bg-image-full" style="background-image: url('../../static/img/sushiHEAD.png');">
+  <img class="img-fluid d-block mx-auto" src="../../static/img/sushi_bai_kiyoshi_logo_new.png" alt="">
+</header>
+
+  <div class="container" style="text-align: center; margin-top: 15px;" id="login-panel">
+    <h1 class="jumbotron-heading">Welcome!</h1>
+    <p class="lead text-muted">This is the official website of Sushi Bai Kiyoshi!</p>
+    <p>
+      <a href="/menu" class="btn btn-secondary my-2">View Menu</a>
+      <a href="/login" class="btn btn-secondary my-2">Login</a>
+    </p>
   </div>
 
   {% endblock %}

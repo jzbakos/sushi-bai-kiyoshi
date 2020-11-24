@@ -2,167 +2,145 @@
 {% set active_page = "menu" %} {% block body %}
 
 <div class="container">
+  <h1 class="menu-title display-4">Maki</h1>
+  <hr class="menu-title-hr" />
+  <div class="table-responsive">
+    <table id="menu-table" class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th style="width: 20%">Name</th>
+          <th style="width: 55%">Description</th>
+          <th style="width: 10%; text-align: center">Price</th>
+          <th style="width: 15%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set count = [ ] %} {% set j = 0 %} {% for item in maki %}
+        <tr class="table-danger">
+          <td>{{ maki[count|length][j + 1] }}</td>
+          <td>{{ maki[count|length][j + 2] }}</td>
+          <td style="text-align: center">
+            <strong>{{ maki[count|length][j + 3] }}</strong>
+          </td>
+          <td style="text-align: right">
+            <button
+              type="button"
+              onclick="alertMessage('success', 'Added to order!'); "
+              class="btn btn-light"
+            >
+              Add To Order
+            </button>
+          </td>
+        </tr>
+        {% set i = count.append(1) %} {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
   <h1 class="menu-title display-4">Nigiri</h1>
   <hr class="menu-title-hr" />
-  <table id="menu-table" class="table table-sm table-hover">
-    <thead>
-      <tr>
-        <th scope="col" style="width: 10%">Item</th>
-        <th scope="col" style="width: 60%">Description</th>
-        <th scope="col" style="width: 15%; text-align: center">Price ($)</th>
-        <th scope="col" style="width: 15%"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-danger">
-        <td scope="row">Mark</td>
-        <td>Otto</td>
-        <td class="item-price">$9.99</td>
-        <td>
-          <button
-            type="button"
-            onclick="alertMessage('success', 'Added to order!')"
-            class="btn btn-light"
-          >
-            Add To Order
-          </button>
-        </td>
-      </tr>
-      <tr class="table-danger">
-        <td scope="row">Jacob</td>
-        <td>Thornton</td>
-        <td class="item-price">$7.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-      <tr class="table-danger">
-        <td scope="row">Larry</td>
-        <td>the Bird</td>
-        <td class="item-price">$6.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table id="menu-table" class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th style="width: 20%">Name</th>
+          <th style="width: 55%">Description</th>
+          <th style="width: 10%; text-align: center">Price</th>
+          <th style="width: 15%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set count = [ ] %} {% set j = 0 %} {% for item in nigiri %}
+        <tr class="table-danger">
+          <td>{{ nigiri[count|length][j + 1] }}</td>
+          <td>{{ nigiri[count|length][j + 2] }}</td>
+          <td style="text-align: center">
+            <strong>{{ nigiri[count|length][j + 3] }}</strong>
+          </td>
+          <td style="text-align: right">
+            <button
+              type="button"
+              onclick="alertMessage('success', 'Added to order!'); "
+              class="btn btn-light"
+            >
+              Add To Order
+            </button>
+          </td>
+        </tr>
+        {% set i = count.append(1) %} {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
   <h1 class="menu-title display-4">Sashimi</h1>
   <hr class="menu-title-hr" />
-  <table id="menu-table" class="table table-sm table-hover">
-    <thead>
-      <tr>
-        <th scope="col" style="width: 10%">Item</th>
-        <th scope="col" style="width: 60%">Description</th>
-        <th scope="col" style="width: 15%; text-align: center">Price ($)</th>
-        <th scope="col" style="width: 15%"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-danger">
-        <td scope="row">Mark</td>
-        <td>Otto</td>
-        <td class="item-price">$9.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-      <tr class="table-danger">
-        <td scope="row">Jacob</td>
-        <td>Thornton</td>
-        <td class="item-price">$7.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-      <tr class="table-danger">
-        <td scope="row">Larry</td>
-        <td>the Bird</td>
-        <td class="item-price">$6.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h1 class="menu-title display-4">Maki</h1>
-  <hr class="menu-title-hr" />
-  <table id="menu-table" class="table table-sm table-hover">
-    <thead>
-      <tr>
-        <th scope="col" style="width: 10%">Item</th>
-        <th scope="col" style="width: 60%">Description</th>
-        <th scope="col" style="width: 15%; text-align: center">Price ($)</th>
-        <th scope="col" style="width: 15%"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-danger">
-        <td scope="row">Mark</td>
-        <td>Otto</td>
-        <td class="item-price">$9.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-      <tr class="table-danger">
-        <td scope="row">Jacob</td>
-        <td>Thornton</td>
-        <td class="item-price">$7.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-      <tr class="table-danger">
-        <td scope="row">Larry</td>
-        <td>the Bird</td>
-        <td class="item-price">$6.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table id="menu-table" class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th style="width: 20%">Name</th>
+          <th style="width: 55%">Description</th>
+          <th style="width: 10%; text-align: center">Price</th>
+          <th style="width: 15%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set count = [ ] %} {% set j = 0 %} {% for item in sashimi %}
+        <tr class="table-danger">
+          <td>{{ sashimi[count|length][j + 1] }}</td>
+          <td>{{ sashimi[count|length][j + 2] }}</td>
+          <td style="text-align: center">
+            <strong>{{ sashimi[count|length][j + 3] }}</strong>
+          </td>
+          <td style="text-align: right">
+            <button
+              type="button"
+              onclick="alertMessage('success', 'Added to order!'); "
+              class="btn btn-light"
+            >
+              Add To Order
+            </button>
+          </td>
+        </tr>
+        {% set i = count.append(1) %} {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
   <h1 class="menu-title display-4">Tempura Rolls</h1>
   <hr class="menu-title-hr" />
-  <table id="menu-table" class="table table-sm table-hover">
-    <thead>
-      <tr>
-        <th scope="col" style="width: 10%">Item</th>
-        <th scope="col" style="width: 60%">Description</th>
-        <th scope="col" style="width: 15%; text-align: center">Price ($)</th>
-        <th scope="col" style="width: 15%"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-danger">
-        <td scope="row">Mark</td>
-        <td>Otto</td>
-        <td class="item-price">$9.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-      <tr class="table-danger">
-        <td scope="row">Jacob</td>
-        <td>Thornton</td>
-        <td class="item-price">$7.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-      <tr class="table-danger">
-        <td scope="row">Larry</td>
-        <td>the Bird</td>
-        <td class="item-price">$6.99</td>
-        <td>
-          <button type="button" class="btn btn-light">Add To Order</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table id="menu-table" class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th style="width: 20%">Name</th>
+          <th style="width: 55%">Description</th>
+          <th style="width: 10%; text-align: center">Price</th>
+          <th style="width: 15%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set count = [ ] %} {% set j = 0 %} {% for item in tempura_rolls %}
+        <tr class="table-danger">
+          <td>{{ tempura_rolls[count|length][j + 1] }}</td>
+          <td>{{ tempura_rolls[count|length][j + 2] }}</td>
+          <td style="text-align: center">
+            <strong>{{ tempura_rolls[count|length][j + 3] }}</strong>
+          </td>
+          <td style="text-align: right">
+            <button
+              type="button"
+              onclick="alertMessage('success', 'Added to order!'); "
+              class="btn btn-light"
+            >
+              Add To Order
+            </button>
+          </td>
+        </tr>
+        {% set i = count.append(1) %} {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 
 {% endblock %}
