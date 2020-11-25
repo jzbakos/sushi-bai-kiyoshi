@@ -15,6 +15,7 @@ History{% endblock %} {% set active_page = "order_history" %} {% block partial
         <th>Time completed</th>
         <th>User</th>
         <th>Phone #</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +29,20 @@ History{% endblock %} {% set active_page = "order_history" %} {% block partial
         <td>{{ myresult[count|length][j + 5] }}</td>
         <td>{{ myresult[count|length][j + 6] }}</td>
         <td>{{ myresult[count|length][j + 7] }}</td>
+        <td>
+          <form method="POST">
+            <button
+              id="btnComplete"
+              type="submit"
+              class="btn"
+              name="btn_complete"
+              value="{{myresult[count|length][j]}}"
+            >
+              Mark Complete
+            </button>
+            <!-- <input type=submit value="Complete Order"> -->
+          </form>
+        </td>
       </tr>
       {% set i = count.append(1) %} {% endfor %}
     </tbody>

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect, jsonify, session
 import os
 import mysql.connector
+import time
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
@@ -129,7 +130,7 @@ def overview_profits():
 
 
 # Dashboard: active orders route
-@app.route("/active_orders")
+@app.route("/active_orders", methods=["GET", "POST"])
 def active_orders():
     db = mysql.connector.connect(
         user="b6a23f430401bc",
@@ -139,12 +140,24 @@ def active_orders():
     )
 
     cursor = db.cursor()
+    if request.method == "POST":
+        menu_item_id = request.form["btn_complete"]
+        cursor.execute(
+            "UPDATE orders SET is_completed = 1 WHERE order_id = %s" % menu_item_id
+        )
+        date_time = time.strftime("%Y-%m-%d %H:%M:%S")
+        cursor.execute(
+            "UPDATE orders SET date_time_completed = %s WHERE order_id = %s",
+            (date_time, menu_item_id),
+        )
+        db.commit()
 
     cursor.execute(
         "SELECT * FROM orders WHERE is_completed = 0 ORDER BY date_time_placed ASC"
     )
 
     myresult = cursor.fetchall()
+    db.close()
     return render_template("public/dashboard/active_orders.html", myresult=myresult)
 
 
