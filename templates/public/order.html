@@ -2,66 +2,61 @@
 {% set active_page = "order" %} {% block body %}
 
 <div id="order-panel" class="container">
-  <div class="row">
-    <div class="col">
-      <h1 class="menu-title display-4">Current Order</h1>
-      <hr class="menu-title-hr" />
-      <table id="menu-table" class="table table-sm table-hover">
-        <thead>
-          <tr>
-            <th scope="col" style="width: 80%">Item</th>
-            <th scope="col" style="width: 10%; text-align: center">Qty</th>
-            <th scope="col" style="width: 10%; text-align: center">
-              Price ($)
-            </th>
-            <th scope="col" style="width: 10%"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table-danger">
-            <td scope="row">Mark</td>
-            <td class="item-quantity">1</td>
-            <td class="item-price">$9.99</td>
-            <td>
-              <button
-                type="button"
-                onclick="alertMessage('success', 'Removed from order!')"
-                class="btn btn-light"
-              >
-                Remove
-              </button>
-            </td>
-          </tr>
-          <tr class="table-danger">
-            <td scope="row">Jacob</td>
-            <td class="item-quantity">1</td>
-            <td class="item-price">$7.99</td>
-            <td>
-              <button type="button" class="btn btn-light">Remove</button>
-            </td>
-          </tr>
-          <tr class="table-danger">
-            <td scope="row">Larry</td>
-            <td class="item-quantity">1</td>
-            <td class="item-price">$6.99</td>
-            <td>
-              <button type="button" class="btn btn-light">Remove</button>
-            </td>
-          </tr>
-          <tr class="table-danger">
-            <td colspan="3" style="text-align: right">
-              <h4>Total:</h4>
-            </td>
-            <td class="item-price"><h4>$24.97</h4></td>
-          </tr>
-        </tbody>
-      </table>
+  <h1 class="menu-title display-4">Current Order</h1>
+  <hr class="menu-title-hr" />
+  <table id="menu-table" class="table table-sm table-hover">
+    <thead>
+      <tr>
+        <th style="width: 70%">Item</th>
+        <th style="width: 10%; text-align: center">Quantity</th>
+        <th style="width: 10%; text-align: center">Price</th>
+        <th style="width: 20%; text-align: right"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% set count = [ ] %} {% set j = 0 %} {% for item in order %}
+      <tr class="table-danger">
+        <td>{{ order[count|length][j] }}</td>
+        <td style="text-align: center">1</td>
+        <td style="text-align: center">
+          <strong>{{ order[count|length][j + 1] }}</strong>
+        </td>
+        <td style="text-align: right">
+          <form method="POST">
+            <button
+              id="btnRemoveFromOrder"
+              type="submit"
+              class="btn btn-light"
+              name="btn_remove_from_order"
+              value="{{order[count|length][j]}}"
+              onclick="alertMessage('success', 'Removed from order!'); "
+            >
+              Remove
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% set i = count.append(1) %} {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr class="table-danger">
+        <td colspan="3" style="text-align: right"><h4>Total =</h4></td>
+        <td style="text-align: right"><h4>${{price}}</h4></td>
+      </tr>
+    </tfoot>
+  </table>
 
-      <button type="submit" class="btn btn-danger" style="float: right">
-        Checkout
-      </button>
-    </div>
-  </div>
+  <form method="POST">
+    <button
+      type="submit"
+      class="btn btn-danger"
+      value="checkout"
+      name="btn_place_order"
+      style="float: right"
+    >
+      Checkout
+    </button>
+  </form>
 </div>
 
 {% endblock %}

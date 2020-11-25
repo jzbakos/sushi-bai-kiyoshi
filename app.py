@@ -16,7 +16,7 @@ def index():
 
 
 # Menu route
-@app.route("/menu")
+@app.route("/menu", methods=["GET", "POST"])
 def menu():
     db = mysql.connector.connect(
         user="b6a23f430401bc",
@@ -25,7 +25,16 @@ def menu():
         database="heroku_a907c14370f5a87",
     )
 
+    if "current_order" not in session:
+        session["current_order"] = []
+
     cursor = db.cursor()
+    if request.method == "POST":
+        menu_item_name = request.form["btn_add_to_order"]
+
+        order_items = session["current_order"]
+        order_items.append(menu_item_name)
+        session["current_order"] = order_items
 
     cursor.execute("SELECT * FROM menu_items WHERE category = 'Maki'")
     maki = cursor.fetchall()
@@ -39,6 +48,8 @@ def menu():
     cursor.execute("SELECT * FROM menu_items WHERE category = 'Tempura Rolls'")
     tempura_rolls = cursor.fetchall()
 
+    db.close()
+
     return render_template(
         "public/menu.html",
         maki=maki,
@@ -49,9 +60,52 @@ def menu():
 
 
 # Order page route
-@app.route("/order")
+@app.route("/order", methods=["GET", "POST"])
 def order():
-    return render_template("public/order.html")
+
+    db = mysql.connector.connect(
+        user="b6a23f430401bc",
+        password="4fdd2d42",
+        host="us-cdbr-east-02.cleardb.com",
+        database="heroku_a907c14370f5a87",
+    )
+
+    cursor = db.cursor()
+
+    if request.method == "POST":
+
+        if "btn_place_order" in request.form:
+            print("OLD SESSION: ", session["current_order"])
+            new_order = []
+            session["current_order"] = new_order
+            print("NEW SESSION: ", session["current_order"])
+
+            return render_template("public/index.html")
+        order_item_name = request.form["btn_remove_from_order"]
+
+        order = session["current_order"]
+
+        if order_item_name in order:
+            order.remove(order_item_name)
+
+        session["current_order"] = order
+
+    order_items = []
+    order_price = 0
+
+    if "current_order" in session:
+        order = session["current_order"]
+
+        for item in order:
+            cursor.execute("SELECT * FROM menu_items WHERE name = '%s'" % item)
+            menu_item = cursor.fetchall()
+
+            order_price += float(menu_item[0][3])
+            item = [menu_item[0][1], menu_item[0][3]]
+            order_items.append(item)
+
+    db.close()
+    return render_template("public/order.html", order=order_items, price=order_price)
 
 
 # Register route

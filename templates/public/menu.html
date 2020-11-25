@@ -23,13 +23,18 @@
             <strong>{{ maki[count|length][j + 3] }}</strong>
           </td>
           <td style="text-align: right">
-            <button
-              type="button"
-              onclick="alertMessage('success', 'Added to order!'); "
-              class="btn btn-light"
-            >
-              Add To Order
-            </button>
+            <form method="POST">
+              <button
+                id="btnAddToOrder"
+                type="submit"
+                class="btn btn-light"
+                name="btn_add_to_order"
+                value="{{maki[count|length][j+1]}}"
+                onclick="alertMessage('success', 'Added to order!'); "
+              >
+                Add To Order
+              </button>
+            </form>
           </td>
         </tr>
         {% set i = count.append(1) %} {% endfor %}
@@ -58,13 +63,18 @@
             <strong>{{ nigiri[count|length][j + 3] }}</strong>
           </td>
           <td style="text-align: right">
-            <button
-              type="button"
-              onclick="alertMessage('success', 'Added to order!'); "
-              class="btn btn-light"
-            >
-              Add To Order
-            </button>
+            <form method="POST">
+              <button
+                id="btnAddToOrder"
+                type="submit"
+                class="btn btn-light"
+                name="btn_add_to_order"
+                value="{{nigiri[count|length][j+1]}}"
+                onclick="alertMessage('success', 'Added to order!'); "
+              >
+                Add To Order
+              </button>
+            </form>
           </td>
         </tr>
         {% set i = count.append(1) %} {% endfor %}
@@ -93,13 +103,18 @@
             <strong>{{ sashimi[count|length][j + 3] }}</strong>
           </td>
           <td style="text-align: right">
-            <button
-              type="button"
-              onclick="alertMessage('success', 'Added to order!'); "
-              class="btn btn-light"
-            >
-              Add To Order
-            </button>
+            <form method="POST">
+              <button
+                id="btnAddToOrder"
+                type="submit"
+                class="btn btn-light"
+                name="btn_add_to_order"
+                value="{{sashimi[count|length][j+1]}}"
+                onclick="alertMessage('success', 'Added to order!'); "
+              >
+                Add To Order
+              </button>
+            </form>
           </td>
         </tr>
         {% set i = count.append(1) %} {% endfor %}
@@ -128,13 +143,18 @@
             <strong>{{ tempura_rolls[count|length][j + 3] }}</strong>
           </td>
           <td style="text-align: right">
-            <button
-              type="button"
-              onclick="alertMessage('success', 'Added to order!'); "
-              class="btn btn-light"
-            >
-              Add To Order
-            </button>
+            <form method="POST">
+              <button
+                id="btnAddToOrder"
+                type="submit"
+                class="btn btn-light"
+                name="btn_add_to_order"
+                value="{{tempura_rolls[count|length][j+1]}}"
+                onclick="alertMessage('success', 'Added to order!'); "
+              >
+                Add To Order
+              </button>
+            </form>
           </td>
         </tr>
         {% set i = count.append(1) %} {% endfor %}
