@@ -104,17 +104,48 @@ def order_history():
 
     cursor = db.cursor()
 
-    cursor.execute("SELECT * FROM orders ORDER BY date_time_placed DESC")
+    cursor.execute(
+        "SELECT * FROM orders WHERE is_completed = 1 ORDER BY date_time_placed DESC"
+    )
 
     myresult = cursor.fetchall()
 
     return render_template("public/dashboard/order_history.html", myresult=myresult)
 
 
+@app.route("/overview_num_orders")
+def overview_num_orders():
+    return render_template("public/dashboard/overview_num_orders.html")
+
+
+@app.route("/overview_wasted_items")
+def overview_wasted_items():
+    return render_template("public/dashboard/overview_wasted_items.html")
+
+
+@app.route("/overview_profits")
+def overview_profits():
+    return render_template("public/dashboard/overview_profits.html")
+
+
 # Dashboard: active orders route
 @app.route("/active_orders")
 def active_orders():
-    return render_template("public/dashboard/active_orders.html")
+    db = mysql.connector.connect(
+        user="b6a23f430401bc",
+        password="4fdd2d42",
+        host="us-cdbr-east-02.cleardb.com",
+        database="heroku_a907c14370f5a87",
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        "SELECT * FROM orders WHERE is_completed = 0 ORDER BY date_time_placed ASC"
+    )
+
+    myresult = cursor.fetchall()
+    return render_template("public/dashboard/active_orders.html", myresult=myresult)
 
 
 # Profile route
