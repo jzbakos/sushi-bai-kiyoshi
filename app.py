@@ -79,8 +79,9 @@ def order():
             new_order = []
             session["current_order"] = new_order
             print("NEW SESSION: ", session["current_order"])
+            message = "Order Placed!"
+            return render_template("public/index.html", message=message)
 
-            return render_template("public/index.html")
         order_item_name = request.form["btn_remove_from_order"]
 
         order = session["current_order"]
@@ -170,7 +171,24 @@ def order_history():
 
 @app.route("/overview_num_orders")
 def overview_num_orders():
-    return render_template("public/dashboard/overview_num_orders.html")
+    db = mysql.connector.connect(
+        user="b6a23f430401bc",
+        password="4fdd2d42",
+        host="us-cdbr-east-02.cleardb.com",
+        database="heroku_a907c14370f5a87",
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        "SELECT DATE(date_time_placed), COUNT(*) FROM orders WHERE DATE(date_time_placed) >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) GROUP BY DATE(date_time_placed) DESC;"
+    )
+
+    myresult = cursor.fetchall()
+    db.close()
+    return render_template(
+        "public/dashboard/overview_num_orders.html", myresult=myresult
+    )
 
 
 @app.route("/overview_wasted_items")

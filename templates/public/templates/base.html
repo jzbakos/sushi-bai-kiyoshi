@@ -57,6 +57,21 @@
     <div id="alertMessage" class="alert alert-success" role="alert" style="visibility: hidden; text-align: center; margin-bottom: 0;">
       alert message
     </div>
+      <script>
+        window.onload = function() {
+          console.log('MESSAGE: {{message}}')
+          if ('{{ message }}' == "")
+          {
+            console.log("EMTPY")
+          }
+          else
+          {
+            alertMessage('success', '{{message}}');
+          }
+          
+        };
+      </script>
+    
     {% block body %} {% endblock %}
   </main>
 
