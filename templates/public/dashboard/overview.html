@@ -1,25 +1,33 @@
 {% extends 'public/dashboard/dashboard_base.html' %} {% block title %}Overview{%
-endblock %} {% set active_page = "overview" %} {% block partial %}
+endblock %} {% block partial %}
 
 <h1 style="margin-bottom: 0" class="display-3">Overview</h1>
 <h4 style="font-weight: 300">
   Take a look at trends over the last <strong>7</strong> days
 </h4>
-<hr class="menu-title-hr" />
-<button
-  class="btn btn-danger"
-  onclick="location.href = '/overview_wasted_items';"
->
-  Wasted Items
-</button>
-<button class="btn btn-danger" onclick="location.href = '/overview_profits';">
-  Profits
-</button>
-<button
-  class="btn btn-danger"
-  onclick="location.href = '/overview_num_orders';"
->
-  # of Orders
-</button>
-<hr />
+<hr class="menu-title-hr" style="width: 95%; float: left" />
+<div class="container-fluid" style="margin-bottom: 20px; padding-left: 0">
+  <button
+    class="{{ 'btn btn-active' if active_page == 'overview_wasted_items' else 'btn btn-danger' }}"
+    onclick="location.href = '/overview_wasted_items';"
+  >
+    <script>
+      console.log("ACTIVE PAGE: {{ active_page }}");
+    </script>
+    Wasted Items
+  </button>
+  <button
+    class="{{ 'btn btn-active' if active_page == 'overview_profits' else 'btn btn-danger' }}"
+    onclick="location.href = '/overview_profits';"
+  >
+    Profits
+  </button>
+  <button
+    class="{{ 'btn btn-active' if active_page == 'overview_num_orders' else 'btn btn-danger' }}"
+    onclick="location.href = '/overview_num_orders';"
+  >
+    # of Orders
+  </button>
+</div>
+
 {% block content %} {% endblock %} {% endblock %}

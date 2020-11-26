@@ -235,6 +235,25 @@ def order_history():
     return render_template("public/dashboard/order_history.html", myresult=myresult)
 
 
+# Dashboard: menu items route
+@app.route("/menu_items")
+def menu_items():
+    db = mysql.connector.connect(
+        user="b6a23f430401bc",
+        password="4fdd2d42",
+        host="us-cdbr-east-02.cleardb.com",
+        database="heroku_a907c14370f5a87",
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * FROM menu_items")
+
+    myresult = cursor.fetchall()
+
+    return render_template("public/dashboard/menu_items.html", myresult=myresult)
+
+
 # Dashboard: order history route
 @app.route("/registered_users")
 def registered_users():

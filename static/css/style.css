@@ -19,6 +19,10 @@ body {
   background-color: rgb(173, 46, 53);
 }
 
+.btn-active {
+  background-color: rgb(173, 46, 53);
+}
+
 .center-title {
   text-align: center;
 }
