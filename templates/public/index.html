@@ -34,14 +34,14 @@
       This is the official website of Sushi Bai Kiyoshi!
     </p>
     <p>
-      {% if session['logged_in'] == True %}
+      {% if session.get('logged_in') and session['logged_in'] == True %}
       <a href="/menu" class="btn btn-secondary my-2">View Menu</a>
       {% else %}
       <a href="/menu" class="btn btn-secondary my-2">View Menu</a>
       <a href="/login" class="btn btn-secondary my-2">Login</a>
       {% endif %}
     </p>
-    {% if session['logged_in'] == False %}
+    {% if session.get('logged_in') and session['logged_in'] != True %}
     <small>Don't have an account? <a href="/register">Register</a></small>
     {% endif %}
   </div>

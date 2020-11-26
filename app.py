@@ -202,7 +202,16 @@ def logout():
 # Dashboard route(s)
 @app.route("/dashboard")
 def dashboard():
-    return render_template("public/dashboard/overview.html")
+    error = ""
+    if session.get("user"):
+        if session["user"][6] == "Admin":
+            return render_template("public/dashboard/overview.html")
+        else:
+            error = "You do not have permission to access the dashboard."
+            return render_template("public/index.html", error=error)
+    else:
+        error = "You must be logged in to access the dashboard."
+        return render_template("public/index.html", error=error)
 
 
 # Dashboard: order history route

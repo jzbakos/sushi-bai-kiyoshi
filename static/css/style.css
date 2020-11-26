@@ -23,6 +23,11 @@ body {
   text-align: center;
 }
 
+.error,
+.success {
+  font-weight: 500;
+}
+
 #logo:hover {
   filter: brightness(90%);
 }

@@ -6,11 +6,11 @@ function alertMessage(type, message)
     // Determine message type
     if (type == 'success')
     {
-        msgSuccess.className = 'alert alert-success';
+        msgSuccess.className = 'alert alert-success success';
     }
     else if (type == 'error')
     {
-        msgSuccess.className = 'alert alert-danger';
+        msgSuccess.className = 'alert alert-danger error';
     }
 
     msgSuccess.innerHTML = message;
