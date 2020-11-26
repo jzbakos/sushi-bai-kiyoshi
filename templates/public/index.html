@@ -41,6 +41,7 @@
       <a href="/login" class="btn btn-secondary my-2">Login</a>
       {% endif %}
     </p>
+
     {% if session.get('logged_in') and session['logged_in'] != True %}
     <small>Don't have an account? <a href="/register">Register</a></small>
     {% endif %}

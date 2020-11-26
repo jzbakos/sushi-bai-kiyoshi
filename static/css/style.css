@@ -16,7 +16,7 @@ body {
 }
 
 .bg-dark-red {
-  background-color: rgb(161, 48, 54);
+  background-color: rgb(173, 46, 53);
 }
 
 .center-title {
@@ -28,7 +28,7 @@ body {
   font-weight: 500;
 }
 
-#logo:hover {
+.nav-link #logo:hover {
   filter: brightness(90%);
 }
 
