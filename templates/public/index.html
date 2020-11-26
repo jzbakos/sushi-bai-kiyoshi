@@ -3,18 +3,48 @@
 
 <!-- <img src="../../static/img/sushithing.png" class="img-fluid" alt="Responsive image"> -->
 
-<header class="bg-image-full" style="background-image: url('../../static/img/sushiHEAD.png');">
-  <img class="img-fluid d-block mx-auto" src="../../static/img/sushi_bai_kiyoshi_logo_new.png" alt="">
-</header>
+<div
+  class="bg-image-full"
+  style="
+    background-image: url('../../static/img/sushiHEAD.png');
+    background-size: cover;
+    padding-bottom: 50px;
+    padding-top: 20px;
+  "
+>
+  <img
+    class="img-fluid d-block mx-auto"
+    style=""
+    src="../../static/img/sushi_bai_kiyoshi_logo_new.png"
+    alt=""
+  />
 
-  <div class="container" style="text-align: center; margin-top: 15px;" id="login-panel">
+  <div
+    class="container"
+    style="text-align: center; margin-top: 0"
+    id="login-panel"
+  >
+    {% if session['logged_in'] == True %}
+    <h1 class="jumbotron-heading">Welcome back, {{session['user'][1]}}</h1>
+    {% else %}
     <h1 class="jumbotron-heading">Welcome!</h1>
-    <p class="lead text-muted">This is the official website of Sushi Bai Kiyoshi!</p>
+    {% endif %}
+
+    <p class="lead text-muted">
+      This is the official website of Sushi Bai Kiyoshi!
+    </p>
     <p>
+      {% if session['logged_in'] == True %}
+      <a href="/menu" class="btn btn-secondary my-2">View Menu</a>
+      {% else %}
       <a href="/menu" class="btn btn-secondary my-2">View Menu</a>
       <a href="/login" class="btn btn-secondary my-2">Login</a>
+      {% endif %}
     </p>
+    {% if session['logged_in'] == False %}
+    <small>Don't have an account? <a href="/register">Register</a></small>
+    {% endif %}
   </div>
-
-  {% endblock %}
 </div>
+
+{% endblock %}

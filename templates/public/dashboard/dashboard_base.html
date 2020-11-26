@@ -1,10 +1,12 @@
 {% extends 'public/templates/base.html' %} {% block title %}Menu{% endblock %}
-{% set active_page = "menu" %} {% block body %}
+{% set active_page = "dashboard" %} {% block body %}
 
 <div class="container-fluid" style="height: 100%;">
   <div class="row" style="height: 100%;">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="padding-top: 10px; height: 100%;">
       <div class="sidebar-sticky">
+        <h1 style="font-weight: 300;">Reports</h1>
+        <hr/>
         <ul class="nav flex-column"">
           <li class="nav-item">
             <a class="nav-link active" href="/dashboard">
@@ -46,6 +48,28 @@
                 <polyline points="13 2 13 9 20 9"></polyline>
               </svg>
               Active Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/registered_users">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-file"
+              >
+                <path
+                  d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                ></path>
+                <polyline points="13 2 13 9 20 9"></polyline>
+              </svg>
+              Registered Users
             </a>
           </li>
           <li class="nav-item">

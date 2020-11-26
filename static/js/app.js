@@ -13,16 +13,20 @@ function alertMessage(type, message)
         msgSuccess.className = 'alert alert-danger';
     }
 
+    msgSuccess.innerHTML = message;
+    setTimeout(function() {msgSuccess.innerHTML = ''; msgSuccess.className = '';}, 2000);
+    
+
     // Check if alert is visible
-    if (msgSuccess.style.visibility == 'hidden')
-    {
-        msgSuccess.style.visibility = 'visible';
-        msgSuccess.innerHTML = message;
-        setTimeout(function() {msgSuccess.style.visibility = 'hidden'}, 3000);
-    }
-    else {
-        msgSuccess.innerHTML = message;
-    }
+    // if (msgSuccess.style.display == 'none')
+    // {
+    //     msgSuccess.style.display = 'block';
+    //     msgSuccess.innerHTML = message;
+    //     setTimeout(function() {msgSuccess.style.display = 'none'}, 3000);
+    // }
+    // else {
+    //     msgSuccess.innerHTML = message;
+    // }
 }
 
 // Remove an item from the order

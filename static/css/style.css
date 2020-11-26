@@ -1,9 +1,11 @@
 html {
   height: 100%;
+  margin: 0;
 }
 
 body {
-  height: 100%;
+  min-height: 100%;
+  margin: 0;
   background: rgb(185, 185, 185);
   background: linear-gradient(
       0deg,
@@ -11,10 +13,6 @@ body {
       rgb(247, 247, 247) 85%
     )
     fixed;
-}
-
-main {
-  height: 100%;
 }
 
 .bg-dark-red {
@@ -31,7 +29,7 @@ main {
 
 #navbar {
   border-bottom: 5px rgb(129, 39, 44) solid;
-  min-height: 70px;
+  min-height: 5%;
 }
 
 /* #big-img-container {

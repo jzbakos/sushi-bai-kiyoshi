@@ -23,7 +23,7 @@
   <nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark-red">
     <div class="container">
       <a class="navbar-brand mb-0 h1" href="/""
-            ><img id="logo" src="../../../static/img/sushi_bai_kiyoshi_logo_new.png" width="250" height="57" alt="logo"
+            ><img id="logo" src="../../../static/img/sushi_bai_kiyoshi_logo_new.png" width="250" height="45" alt="logo"
         loading="lazy"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,38 +41,57 @@
           <li class="nav-item">
             <a class="{{ 'nav-link active' if active_page == 'order' else 'nav-link' }}" href="/order">Order</a>
           </li>
-          <li class="nav-item">
-            <a class="{{ 'nav-link active' if active_page == 'login' else 'nav-link' }}" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="{{ 'nav-link active' if active_page == 'register' else 'nav-link' }}"
-              href="/register">Register</a>
-          </li>
+          {% if session.get('user') and session['user'][6] == 'Admin' %}
+            <li><a class="{{ 'nav-link active' if active_page == 'dashboard' else 'nav-link' }}" href="/dashboard">Dashboard</a></li>
+            <li><a class="nav-link" href="/logout">Logout</a></li>
+          {% elif session.get('logged_in') and session['logged_in'] == True %} 
+            <li><a class="nav-link" href="/logout">Logout</a></li>
+          {% else %}
+            <li class="nav-item">
+              <a class="{{ 'nav-link active' if active_page == 'login' else 'nav-link' }}" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="{{ 'nav-link active' if active_page == 'register' else 'nav-link' }}"
+                href="/register">Register</a>
+            </li>
+          {% endif %}
+          
         </ul>
       </div>
     </div>
   </nav>
 
   <main>
-    <div id="alertMessage" class="alert alert-success" role="alert" style="visibility: hidden; text-align: center; margin-bottom: 0;">
-      alert message
-    </div>
-      <script>
-        window.onload = function() {
-          console.log('MESSAGE: {{message}}')
-          if ('{{ message }}' == "")
-          {
-            console.log("EMTPY")
-          }
-          else
-          {
-            alertMessage('success', '{{message}}');
-          }
-          
-        };
-      </script>
+      <div id="alertMessage" role="alert" style="text-align: center; margin-bottom: 0;">
+      
+      </div>
+        <script>
+          window.onload = function() {
+            console.log('MESSAGE: {{message}}')
+            if ('{{ message }}' == "")
+            {
+              console.log("EMTPY")
+            }
+            else
+            {
+              alertMessage('success', '{{message}}');
+            }
+  
+            if ('{{ error }}' == "")
+            {
+              
+            }
+            else
+            {
+              alertMessage('error', '{{error}}');
+            }
+            
+          };
+        </script>
+      
+      {% block body %} {% endblock %}
+
     
-    {% block body %} {% endblock %}
   </main>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

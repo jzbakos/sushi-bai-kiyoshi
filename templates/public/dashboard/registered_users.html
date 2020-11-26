@@ -1,22 +1,19 @@
-{% extends 'public/dashboard/dashboard_base.html' %} {% block title %}Order
-History{% endblock %} {% set active_page = "order_history" %} {% block partial
-%}
+{% extends 'public/dashboard/dashboard_base.html' %} {% block title %}Registered
+Users{% endblock %} {% block partial %}
 
-<h1 class="display-3">Order History</h1>
-<h4 style="font-weight: 300">Easily view the entire order history.</h4>
+<h1 class="display-3">Registered Users</h1>
+<h4 style="font-weight: 300">Manage all registered users easily.</h4>
 <hr class="menu-title-hr" />
 <div class="table-responsive">
   <table class="table table-striped table-sm">
     <thead>
       <tr>
-        <th>Order #</th>
-        <th>Details</th>
-        <th>Last Name</th>
-        <th>Completed</th>
-        <th>Time placed</th>
-        <th>Time completed</th>
         <th>User ID</th>
-        <th>Phone #</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>User Type</th>
       </tr>
     </thead>
     <tbody>
@@ -27,9 +24,7 @@ History{% endblock %} {% set active_page = "order_history" %} {% block partial
         <td>{{ myresult[count|length][j + 2] }}</td>
         <td>{{ myresult[count|length][j + 3] }}</td>
         <td>{{ myresult[count|length][j + 4] }}</td>
-        <td>{{ myresult[count|length][j + 5] }}</td>
         <td>{{ myresult[count|length][j + 6] }}</td>
-        <td>{{ myresult[count|length][j + 7] }}</td>
       </tr>
       {% set i = count.append(1) %} {% endfor %}
     </tbody>

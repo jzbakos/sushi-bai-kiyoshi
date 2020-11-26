@@ -9,9 +9,6 @@ app.secret_key = "super secret key"
 # Default route
 @app.route("/")
 def index():
-    if session.get("user_id"):
-        print("HOME ID:", session.get("user_id"))
-
     return render_template("public/index.html")
 
 
@@ -29,12 +26,6 @@ def menu():
         session["current_order"] = []
 
     cursor = db.cursor()
-    if request.method == "POST":
-        menu_item_name = request.form["btn_add_to_order"]
-
-        order_items = session["current_order"]
-        order_items.append(menu_item_name)
-        session["current_order"] = order_items
 
     cursor.execute("SELECT * FROM menu_items WHERE category = 'Maki'")
     maki = cursor.fetchall()
@@ -47,6 +38,24 @@ def menu():
 
     cursor.execute("SELECT * FROM menu_items WHERE category = 'Tempura Rolls'")
     tempura_rolls = cursor.fetchall()
+
+    if request.method == "POST":
+        menu_item_name = request.form["btn_add_to_order"]
+
+        order_items = session["current_order"]
+        order_items.append(menu_item_name)
+        session["current_order"] = order_items
+
+        message = "Added to order."
+        db.close()
+        return render_template(
+            "public/menu.html",
+            maki=maki,
+            nigiri=nigiri,
+            sashimi=sashimi,
+            tempura_rolls=tempura_rolls,
+            message=message,
+        )
 
     db.close()
 
@@ -75,12 +84,16 @@ def order():
     if request.method == "POST":
 
         if "btn_place_order" in request.form:
-            print("OLD SESSION: ", session["current_order"])
-            new_order = []
-            session["current_order"] = new_order
-            print("NEW SESSION: ", session["current_order"])
-            message = "Order Placed!"
-            return render_template("public/index.html", message=message)
+            if session["current_order"]:
+                print("OLD SESSION: ", session["current_order"])
+                new_order = []
+                session["current_order"] = new_order
+                print("NEW SESSION: ", session["current_order"])
+                message = "Order Placed!"
+                return render_template("public/index.html", message=message)
+            else:
+                error = "ERROR: You don't have any items in your order!"
+                return render_template("public/order.html", error=error)
 
         order_item_name = request.form["btn_remove_from_order"]
 
@@ -112,8 +125,17 @@ def order():
 # Register route
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    error = None
+    error = ""
+    message = ""
+
     if request.method == "POST":
+        print("Attemping Registration...")
+        print(request.form["email"])
+        print(request.form["firstName"])
+        print(request.form["lastName"])
+        print(request.form["phoneNumber"])
+        print(request.form["password"])
+        print(request.form["passwordConfirm"])
         if register_user(
             request.form["email"],
             request.form["firstName"],
@@ -122,24 +144,59 @@ def register():
             request.form["password"],
             request.form["passwordConfirm"],
         ):
-            return redirect(url_for("index"))
-        else:
-            error = "User credentials are invalid. Try again."
 
-    return render_template("public/register.html", error=error)
+            message = "Registered Successfully!"
+            print("Registered.")
+            authenticate_user(request.form["email"], request.form["password"])
+            return render_template("public/index.html", message=message, error=error)
+        else:
+            print("Error.")
+            error = "User credentials are invalid. Try again."
+            return render_template("public/register.html", message=error)
+
+    return render_template("public/register.html", message=message, error=error)
 
 
 # Login route
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    error = None
+    error = ""
     if request.method == "POST":
+        db = mysql.connector.connect(
+            user="b6a23f430401bc",
+            password="4fdd2d42",
+            host="us-cdbr-east-02.cleardb.com",
+            database="heroku_a907c14370f5a87",
+        )
+
+        cursor = db.cursor()
+
         if authenticate_user(request.form["email"], request.form["password"]):
-            return redirect(url_for("index"))
+
+            cursor.execute(
+                "SELECT * FROM users WHERE email_address = '%s'" % request.form["email"]
+            )
+
+            user = cursor.fetchall()
+            name = user[0][1]
+
+            message = "Welcome back, %s!" % name
+            print("Logged In.")
+            db.close()
+            return render_template("public/index.html", message=message, error=error)
         else:
+            db.close()
             error = "User credentials are incorrect. Try again."
 
     return render_template("public/login.html", error=error)
+
+
+# Logout route
+@app.route("/logout")
+def logout():
+    logout_user()
+    message = "Logged out!"
+    return render_template("public/index.html", message=message)
 
 
 # Dashboard route(s)
@@ -167,6 +224,25 @@ def order_history():
     myresult = cursor.fetchall()
 
     return render_template("public/dashboard/order_history.html", myresult=myresult)
+
+
+# Dashboard: order history route
+@app.route("/registered_users")
+def registered_users():
+    db = mysql.connector.connect(
+        user="b6a23f430401bc",
+        password="4fdd2d42",
+        host="us-cdbr-east-02.cleardb.com",
+        database="heroku_a907c14370f5a87",
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * FROM users")
+
+    myresult = cursor.fetchall()
+
+    return render_template("public/dashboard/registered_users.html", myresult=myresult)
 
 
 @app.route("/overview_num_orders")
@@ -259,8 +335,9 @@ def authenticate_user(email, password):
         print("User found, checking password next...")
         if myresult[0][5] == password:
             print("Passwords match. Successful login!")
-            print("USER ID:", myresult[0][0])
-            session["user_id"] = myresult[0][0]
+            session["logged_in"] = True
+            session["user"] = myresult[0]
+            print("LOGGED IN: ", myresult[0])
             db.close()
             return True
         else:
@@ -292,6 +369,15 @@ def register_user(email, firstName, lastName, phoneNumber, password, passwordCon
 
     db.commit()
     db.close()
+
+    return True
+
+
+def logout_user():
+    print("LOGGED OUT: ", session["user"])
+    logged_user = []
+    session["user"] = logged_user
+    session["logged_in"] = False
 
 
 # port = os.environ["PORT"]
