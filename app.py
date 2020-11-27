@@ -255,7 +255,7 @@ def menu_items():
 
 
 # Dashboard: order history route
-@app.route("/registered_users")
+@app.route("/registered_users", methods=["GET", "POST"])
 def registered_users():
     db = mysql.connector.connect(
         user="b6a23f430401bc",
@@ -265,6 +265,18 @@ def registered_users():
     )
 
     cursor = db.cursor()
+
+    if request.method == "POST" and request.form["input_search_user"] != "":
+        print("SEARCH: %s" % request.form["input_search_user"])
+        cursor.execute(
+            "SELECT * FROM users WHERE user_id = '%s'"
+            % request.form["input_search_user"]
+        )
+
+        myresult = cursor.fetchall()
+        return render_template(
+            "public/dashboard/registered_users.html", myresult=myresult
+        )
 
     cursor.execute("SELECT * FROM users")
 

@@ -5,8 +5,12 @@
   <h1 class="menu-title display-4">Maki</h1>
   <hr class="menu-title-hr" />
   <div class="table-responsive">
-    <table id="menu-table" class="table table-sm table-hover">
-      <thead>
+    <table
+      id="menu-table"
+      class="table table-sm table-hover"
+      style="background-color: white"
+    >
+      <thead style="border-bottom: 3px rgb(129, 39, 44) solid">
         <tr>
           <th style="width: 20%; font-size: 90%">NAME</th>
           <th style="width: 50%; font-size: 90%">DESCRIPTION</th>
@@ -16,8 +20,10 @@
       </thead>
       <tbody>
         {% set count = [ ] %} {% set j = 0 %} {% for item in maki %}
-        <tr class="table-danger">
-          <td><strong>{{ maki[count|length][j + 1] }}</strong></td>
+        <tr>
+          <td>
+            <strong>{{ maki[count|length][j + 1] }}</strong>
+          </td>
           <td>{{ maki[count|length][j + 2] }}</td>
           <td style="text-align: center">
             <strong>${{ maki[count|length][j + 3] }}</strong>
@@ -27,12 +33,12 @@
               <button
                 id="btnAddToOrder"
                 type="submit"
-                class="btn btn-light"
+                class="btn btn-dark"
                 name="btn_add_to_order"
                 value="{{maki[count|length][j+1]}}"
               >
                 <img
-                  src="../../../static/img/plus-circle-black.svg"
+                  src="../../../static/img/plus-circle.svg"
                   alt="plus-circle"
                   style="margin-right: 5px"
                 />
@@ -49,8 +55,12 @@
   <h1 class="menu-title display-4">Nigiri</h1>
   <hr class="menu-title-hr" />
   <div class="table-responsive">
-    <table id="menu-table" class="table table-sm table-hover">
-      <thead>
+    <table
+      id="menu-table"
+      class="table table-sm table-hover"
+      style="background-color: white"
+    >
+      <thead style="border-bottom: 3px rgb(129, 39, 44) solid">
         <tr>
           <th style="width: 20%; font-size: 90%">NAME</th>
           <th style="width: 50%; font-size: 90%">DESCRIPTION</th>
@@ -60,7 +70,7 @@
       </thead>
       <tbody>
         {% set count = [ ] %} {% set j = 0 %} {% for item in nigiri %}
-        <tr class="table-danger">
+        <tr>
           <td><strong>{{ nigiri[count|length][j + 1] }}</strong></td>
           <td>{{ nigiri[count|length][j + 2] }}</td>
           <td style="text-align: center">
@@ -71,12 +81,12 @@
               <button
                 id="btnAddToOrder"
                 type="submit"
-                class="btn btn-light"
+                class="btn btn-dark"
                 name="btn_add_to_order"
                 value="{{nigiri[count|length][j+1]}}"
               >
                 <img
-                  src="../../../static/img/plus-circle-black.svg"
+                  src="../../../static/img/plus-circle.svg"
                   alt="plus-circle"
                   style="margin-right: 5px"
                 />
@@ -93,8 +103,12 @@
   <h1 class="menu-title display-4">Sashimi</h1>
   <hr class="menu-title-hr" />
   <div class="table-responsive">
-    <table id="menu-table" class="table table-sm table-hover">
-      <thead>
+    <table
+      id="menu-table"
+      class="table table-sm table-hover"
+      style="background-color: white"
+    >
+      <thead style="border-bottom: 3px rgb(129, 39, 44) solid">
         <tr>
           <th style="width: 20%; font-size: 90%">NAME</th>
           <th style="width: 50%; font-size: 90%">DESCRIPTION</th>
@@ -104,7 +118,7 @@
       </thead>
       <tbody>
         {% set count = [ ] %} {% set j = 0 %} {% for item in sashimi %}
-        <tr class="table-danger">
+        <tr>
           <td><strong>{{ sashimi[count|length][j + 1] }}</strong></td>
           <td>{{ sashimi[count|length][j + 2] }}</td>
           <td style="text-align: center">
@@ -115,12 +129,12 @@
               <button
                 id="btnAddToOrder"
                 type="submit"
-                class="btn btn-light"
+                class="btn btn-dark"
                 name="btn_add_to_order"
                 value="{{sashimi[count|length][j+1]}}"
               >
                 <img
-                  src="../../../static/img/plus-circle-black.svg"
+                  src="../../../static/img/plus-circle.svg"
                   alt="plus-circle"
                   style="margin-right: 5px"
                 />
@@ -137,8 +151,12 @@
   <h1 class="menu-title display-4">Tempura Rolls</h1>
   <hr class="menu-title-hr" />
   <div class="table-responsive">
-    <table id="menu-table" class="table table-sm table-hover">
-      <thead>
+    <table
+      id="menu-table"
+      class="table table-sm table-hover"
+      style="background-color: white"
+    >
+      <thead style="border-bottom: 3px rgb(129, 39, 44) solid">
         <tr>
           <th style="width: 20%; font-size: 90%">NAME</th>
           <th style="width: 50%; font-size: 90%">DESCRIPTION</th>
@@ -148,7 +166,7 @@
       </thead>
       <tbody>
         {% set count = [ ] %} {% set j = 0 %} {% for item in tempura_rolls %}
-        <tr class="table-danger">
+        <tr>
           <td><strong>{{ tempura_rolls[count|length][j + 1] }}</strong></td>
           <td>{{ tempura_rolls[count|length][j + 2] }}</td>
           <td style="text-align: center">
@@ -159,12 +177,12 @@
               <button
                 id="btnAddToOrder"
                 type="submit"
-                class="btn btn-light"
+                class="btn btn-dark"
                 name="btn_add_to_order"
                 value="{{tempura_rolls[count|length][j+1]}}"
               >
                 <img
-                  src="../../../static/img/plus-circle-black.svg"
+                  src="../../../static/img/plus-circle.svg"
                   alt="plus-circle"
                   style="margin-right: 5px"
                 />
