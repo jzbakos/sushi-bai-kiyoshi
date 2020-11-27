@@ -93,7 +93,7 @@ def order():
                 return render_template("public/index.html", message=message)
             else:
                 error = "ERROR: You don't have any items in your order!"
-                return render_template("public/order.html", error=error)
+                return render_template("public/order.html", error=error, price=0)
 
         order_item_name = request.form["btn_remove_from_order"]
 

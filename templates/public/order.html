@@ -7,10 +7,10 @@
   <table id="menu-table" class="table table-sm table-hover">
     <thead>
       <tr>
-        <th style="width: 70%">Item</th>
+        <th style="width: 65%">Item</th>
         <th style="width: 10%; text-align: center">Quantity</th>
         <th style="width: 10%; text-align: center">Price</th>
-        <th style="width: 20%; text-align: right"></th>
+        <th style="width: 15%; text-align: right"></th>
       </tr>
     </thead>
     <tbody>
@@ -19,18 +19,23 @@
         <td>{{ order[count|length][j] }}</td>
         <td style="text-align: center">1</td>
         <td style="text-align: center">
-          <strong>{{ order[count|length][j + 1] }}</strong>
+          <strong>${{ order[count|length][j + 1] }}</strong>
         </td>
         <td style="text-align: right">
           <form method="POST">
             <button
               id="btnRemoveFromOrder"
               type="submit"
-              class="btn btn-light"
+              class="btn btn-danger"
               name="btn_remove_from_order"
               value="{{order[count|length][j]}}"
               onclick="alertMessage('success', 'Removed from order!'); "
             >
+              <img
+                src="../../../static/img/x-circle.svg"
+                alt="x-circle"
+                style="margin-right: 5px"
+              />
               Remove
             </button>
           </form>
@@ -38,25 +43,67 @@
       </tr>
       {% set i = count.append(1) %} {% endfor %}
     </tbody>
-    <tfoot>
-      <tr class="table-danger">
-        <td colspan="3" style="text-align: right"><h4>Total =</h4></td>
-        <td style="text-align: right"><h4>${{price}}</h4></td>
-      </tr>
-    </tfoot>
   </table>
 
-  <form method="POST">
-    <button
-      type="submit"
-      class="btn btn-danger"
-      value="checkout"
-      name="btn_place_order"
-      style="float: right"
-    >
-      Checkout
-    </button>
-  </form>
+  <div
+    class="container-fluid bg-light"
+    style="
+      float: right;
+      min-width: 232px;
+      max-width: 300px;
+      padding: 10px;
+      border-radius: 10px;
+      min-height: 185px;
+      max-height: 300px;
+    "
+  >
+    <div class="row" style="margin: 2px">
+      <div class="col-8" style="text-align: right; padding: 0">
+        <h5>Subtotal =</h5>
+      </div>
+      <div class="col-4" style="text-align: right; padding: 0">
+        <h5 style="font-weight: 300">${{price}}</h5>
+      </div>
+    </div>
+    <div class="row" style="margin: 2px">
+      <div class="col-8" style="text-align: right; padding: 0">
+        <h5>Tax =</h5>
+      </div>
+      <div class="col-4" style="text-align: right; padding: 0">
+        <h5 style="font-weight: 300">${{"%.2f"|format(price * 0.13)}}</h5>
+      </div>
+    </div>
+    <hr />
+    <div class="row" style="margin: 2px">
+      <div class="col-8" style="text-align: right; padding: 0">
+        <h5>Grand Total =</h5>
+      </div>
+      <div class="col-4" style="text-align: right; padding: 0">
+        <h5>${{"%.2f"|format(price * 1.13)}}</h5>
+      </div>
+    </div>
+    <hr />
+    <div class="row" style="margin: 2px">
+      <div class="col" style="text-align: center">
+        <form method="POST">
+          <button
+            type="submit"
+            class="btn btn-success"
+            value="checkout"
+            name="btn_place_order"
+            style="width: 100%"
+          >
+            <img
+              src="../../../static/img/credit-card.svg"
+              alt="credit-card"
+              style="margin-right: 5px"
+            />
+            Proceed to Payment
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

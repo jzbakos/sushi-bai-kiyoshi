@@ -8,19 +8,19 @@
     <table id="menu-table" class="table table-sm table-hover">
       <thead>
         <tr>
-          <th style="width: 20%">Name</th>
-          <th style="width: 55%">Description</th>
-          <th style="width: 10%; text-align: center">Price</th>
-          <th style="width: 15%"></th>
+          <th style="width: 20%; font-size: 90%">NAME</th>
+          <th style="width: 50%; font-size: 90%">DESCRIPTION</th>
+          <th style="width: 10%; text-align: center; font-size: 90%">PRICE</th>
+          <th style="width: 20%"></th>
         </tr>
       </thead>
       <tbody>
         {% set count = [ ] %} {% set j = 0 %} {% for item in maki %}
         <tr class="table-danger">
-          <td>{{ maki[count|length][j + 1] }}</td>
+          <td><strong>{{ maki[count|length][j + 1] }}</strong></td>
           <td>{{ maki[count|length][j + 2] }}</td>
           <td style="text-align: center">
-            <strong>{{ maki[count|length][j + 3] }}</strong>
+            <strong>${{ maki[count|length][j + 3] }}</strong>
           </td>
           <td style="text-align: right">
             <form method="POST">
@@ -31,6 +31,11 @@
                 name="btn_add_to_order"
                 value="{{maki[count|length][j+1]}}"
               >
+                <img
+                  src="../../../static/img/plus-circle-black.svg"
+                  alt="plus-circle"
+                  style="margin-right: 5px"
+                />
                 Add To Order
               </button>
             </form>
@@ -47,19 +52,19 @@
     <table id="menu-table" class="table table-sm table-hover">
       <thead>
         <tr>
-          <th style="width: 20%">Name</th>
-          <th style="width: 55%">Description</th>
-          <th style="width: 10%; text-align: center">Price</th>
-          <th style="width: 15%"></th>
+          <th style="width: 20%; font-size: 90%">NAME</th>
+          <th style="width: 50%; font-size: 90%">DESCRIPTION</th>
+          <th style="width: 10%; text-align: center; font-size: 90%">PRICE</th>
+          <th style="width: 20%"></th>
         </tr>
       </thead>
       <tbody>
         {% set count = [ ] %} {% set j = 0 %} {% for item in nigiri %}
         <tr class="table-danger">
-          <td>{{ nigiri[count|length][j + 1] }}</td>
+          <td><strong>{{ nigiri[count|length][j + 1] }}</strong></td>
           <td>{{ nigiri[count|length][j + 2] }}</td>
           <td style="text-align: center">
-            <strong>{{ nigiri[count|length][j + 3] }}</strong>
+            <strong>${{ nigiri[count|length][j + 3] }}</strong>
           </td>
           <td style="text-align: right">
             <form method="POST">
@@ -70,6 +75,11 @@
                 name="btn_add_to_order"
                 value="{{nigiri[count|length][j+1]}}"
               >
+                <img
+                  src="../../../static/img/plus-circle-black.svg"
+                  alt="plus-circle"
+                  style="margin-right: 5px"
+                />
                 Add To Order
               </button>
             </form>
@@ -86,19 +96,19 @@
     <table id="menu-table" class="table table-sm table-hover">
       <thead>
         <tr>
-          <th style="width: 20%">Name</th>
-          <th style="width: 55%">Description</th>
-          <th style="width: 10%; text-align: center">Price</th>
-          <th style="width: 15%"></th>
+          <th style="width: 20%; font-size: 90%">NAME</th>
+          <th style="width: 50%; font-size: 90%">DESCRIPTION</th>
+          <th style="width: 10%; text-align: center; font-size: 90%">PRICE</th>
+          <th style="width: 20%"></th>
         </tr>
       </thead>
       <tbody>
         {% set count = [ ] %} {% set j = 0 %} {% for item in sashimi %}
         <tr class="table-danger">
-          <td>{{ sashimi[count|length][j + 1] }}</td>
+          <td><strong>{{ sashimi[count|length][j + 1] }}</strong></td>
           <td>{{ sashimi[count|length][j + 2] }}</td>
           <td style="text-align: center">
-            <strong>{{ sashimi[count|length][j + 3] }}</strong>
+            <strong>${{ sashimi[count|length][j + 3] }}</strong>
           </td>
           <td style="text-align: right">
             <form method="POST">
@@ -109,6 +119,11 @@
                 name="btn_add_to_order"
                 value="{{sashimi[count|length][j+1]}}"
               >
+                <img
+                  src="../../../static/img/plus-circle-black.svg"
+                  alt="plus-circle"
+                  style="margin-right: 5px"
+                />
                 Add To Order
               </button>
             </form>
@@ -125,19 +140,19 @@
     <table id="menu-table" class="table table-sm table-hover">
       <thead>
         <tr>
-          <th style="width: 20%">Name</th>
-          <th style="width: 55%">Description</th>
-          <th style="width: 10%; text-align: center">Price</th>
-          <th style="width: 15%"></th>
+          <th style="width: 20%; font-size: 90%">NAME</th>
+          <th style="width: 50%; font-size: 90%">DESCRIPTION</th>
+          <th style="width: 10%; text-align: center; font-size: 90%">PRICE</th>
+          <th style="width: 20%"></th>
         </tr>
       </thead>
       <tbody>
         {% set count = [ ] %} {% set j = 0 %} {% for item in tempura_rolls %}
         <tr class="table-danger">
-          <td>{{ tempura_rolls[count|length][j + 1] }}</td>
+          <td><strong>{{ tempura_rolls[count|length][j + 1] }}</strong></td>
           <td>{{ tempura_rolls[count|length][j + 2] }}</td>
           <td style="text-align: center">
-            <strong>{{ tempura_rolls[count|length][j + 3] }}</strong>
+            <strong>${{ tempura_rolls[count|length][j + 3] }}</strong>
           </td>
           <td style="text-align: right">
             <form method="POST">
@@ -148,6 +163,11 @@
                 name="btn_add_to_order"
                 value="{{tempura_rolls[count|length][j+1]}}"
               >
+                <img
+                  src="../../../static/img/plus-circle-black.svg"
+                  alt="plus-circle"
+                  style="margin-right: 5px"
+                />
                 Add To Order
               </button>
             </form>

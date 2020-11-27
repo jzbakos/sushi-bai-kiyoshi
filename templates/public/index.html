@@ -14,7 +14,6 @@
 >
   <img
     class="img-fluid d-block mx-auto"
-    style=""
     src="../../static/img/sushi_bai_kiyoshi_logo_new.png"
     alt=""
   />
@@ -35,9 +34,23 @@
     </p>
     <p>
       {% if session.get('logged_in') and session['logged_in'] == True %}
-      <a href="/menu" class="btn btn-secondary my-2">View Menu</a>
+      <a href="/menu" class="btn btn-secondary my-2"
+        ><img
+          src="../../../static/img/book-open-white.svg"
+          alt="plus-circle"
+          style="margin-right: 5px"
+        />
+        View Menu</a
+      >
       {% else %}
-      <a href="/menu" class="btn btn-secondary my-2">View Menu</a>
+      <a href="/menu" class="btn btn-secondary my-2"
+        ><img
+          src="../../../static/img/book-open-white.svg"
+          alt="plus-circle"
+          style="margin-right: 5px"
+        />
+        View Menu</a
+      >
       <a href="/login" class="btn btn-secondary my-2">Login</a>
       {% endif %}
     </p>

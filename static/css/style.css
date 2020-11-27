@@ -92,6 +92,16 @@ body {
   background-color: rgb(161, 48, 54);
 }
 
+#menu-table td {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding-top: 10px !important;
+}
+
+#menu-table th {
+  padding: 10px;
+}
+
 .item-price,
 .item-quantity {
   text-align: center;
