@@ -3,37 +3,38 @@
 
 <!-- <img src="../../static/img/sushithing.png" class="img-fluid" alt="Responsive image"> -->
 
-<div
-  class="bg-image-full"
-  style="
-    background-image: url('../../static/img/sushiHEAD.png');
-    background-size: cover;
-    padding: 20px 150px 50px 150px;
-  "
->
-  <img
+<div class="bg-image-full">
+  <!-- <img
     class="img-fluid d-block mx-auto"
     src="../../static/img/sushi_bai_kiyoshi_logo_new.png"
     alt=""
-  />
+    style="width: 80%; margin-top: 50px"
+  /> -->
 
   <div
     class="container"
-    style="text-align: center; margin-top: 0"
+    style="
+      text-align: center;
+      margin-top: 120px;
+      padding: 50px;
+      padding-bottom: 30px;
+      min-width: 320px;
+    "
     id="login-panel"
   >
     {% if session['logged_in'] == True %}
-    <h1 class="jumbotron-heading">Welcome back, {{session['user'][1]}}</h1>
+    <h1 class="display-4">Welcome back, {{session['user'][1]}}</h1>
     {% else %}
-    <h1 class="jumbotron-heading">Welcome!</h1>
+    <h1 class="display-2">Welcome!</h1>
     {% endif %}
 
+    <hr />
     <p class="lead text-muted">
       This is the official website of Sushi Bai Kiyoshi!
     </p>
     <p>
       {% if session.get('logged_in') and session['logged_in'] == True %}
-      <a href="/menu" class="btn btn-secondary my-2"
+      <a href="/menu" class="btn btn-dark my-2"
         ><img
           src="../../../static/img/book-open-white.svg"
           alt="plus-circle"
@@ -42,7 +43,7 @@
         View Menu</a
       >
       {% else %}
-      <a href="/menu" class="btn btn-secondary my-2"
+      <a href="/menu" class="btn btn-dark my-2"
         ><img
           src="../../../static/img/book-open-white.svg"
           alt="plus-circle"
@@ -50,11 +51,11 @@
         />
         View Menu</a
       >
-      <a href="/login" class="btn btn-secondary my-2">Login</a>
+      <a href="/login" class="btn btn-dark my-2">Login</a>
       {% endif %}
     </p>
 
-    {% if session.get('logged_in') and session['logged_in'] != True %}
+    {% if session.get('logged_in') != True or session['logged_in'] != True %}
     <small>Don't have an account? <a href="/register">Register</a></small>
     {% endif %}
   </div>

@@ -420,6 +420,6 @@ def logout_user():
     session["logged_in"] = False
 
 
-port = os.environ["PORT"]
-# port = 5000
+# port = os.environ["PORT"]
+port = 5000
 app.run(host="0.0.0.0", port=port)
