@@ -42,7 +42,12 @@ Items{% endblock %} {% block partial %}
               class="btn btn-light"
               name="btn_edit"
               value="{{myresult[count|length][j]}}"
-              style="padding-left: 20px; padding-right: 20px"
+              style="
+                min-width: 121px;
+                width: 40%;
+                padding-left: 20px;
+                padding-right: 20px;
+              "
             >
               <img
                 src="../../../static/img/edit.svg"
@@ -57,7 +62,13 @@ Items{% endblock %} {% block partial %}
               class="btn btn-danger"
               name="btn_delete"
               value="{{myresult[count|length][j]}}"
-              style="margin-left: 10px; padding-left: 20px; padding-right: 20px"
+              style="
+                min-width: 121px;
+                width: 40%;
+                margin-left: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+              "
             >
               <img
                 src="../../../static/img/x-circle.svg"

@@ -1,7 +1,7 @@
 {% extends 'public/templates/base.html' %} {% block title %}Order{% endblock %}
 {% set active_page = "order" %} {% block body %}
 
-<div class="container" style="width: 30%">
+<div class="container" style="width: 40%; min-width: 320px">
   <h1 class="menu-title display-4">Current Order</h1>
   <hr class="menu-title-hr" />
   <table id="menu-table" class="table table-sm" style="background-color: white">
@@ -46,8 +46,9 @@
   </table>
 
   <div
-    class="container-fluid bg-light"
+    class="container-fluid"
     style="
+      background-color: white;
       float: right;
       min-width: 232px;
       max-width: 300px;

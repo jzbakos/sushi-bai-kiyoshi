@@ -10,6 +10,7 @@ endblock %} {% block partial %}
   <button
     class="{{ 'btn btn-active' if active_page == 'overview_wasted_items' else 'btn btn-danger' }}"
     onclick="location.href = '/overview_wasted_items';"
+    style="min-width: 124px; width: 10%; margin-bottom: 5px"
   >
     <script>
       console.log("ACTIVE PAGE: {{ active_page }}");
@@ -19,12 +20,14 @@ endblock %} {% block partial %}
   <button
     class="{{ 'btn btn-active' if active_page == 'overview_profits' else 'btn btn-danger' }}"
     onclick="location.href = '/overview_profits';"
+    style="min-width: 124px; width: 10%; margin-bottom: 5px"
   >
     Profits
   </button>
   <button
     class="{{ 'btn btn-active' if active_page == 'overview_num_orders' else 'btn btn-danger' }}"
     onclick="location.href = '/overview_num_orders';"
+    style="min-width: 124px; width: 10%; margin-bottom: 5px"
   >
     # of Orders
   </button>

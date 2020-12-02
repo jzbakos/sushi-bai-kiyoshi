@@ -12,6 +12,7 @@ body {
 
 .home-body {
   background-image: url("../../static/img/sushiHEAD.png") !important;
+  /* background-image: url("../../static/img/test_wallpaper.png") !important; */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -24,7 +25,7 @@ body {
 }
 
 .bg-dark-red {
-  background-color: rgb(173, 46, 53);
+  background-color: rgb(173, 50, 46);
 }
 
 .btn-active {
@@ -40,7 +41,7 @@ body {
   font-weight: 500;
 }
 
-.nav-link #logo:hover {
+#logo:hover {
   filter: brightness(90%);
 }
 
@@ -97,7 +98,7 @@ body {
 
 #menu-table thead {
   color: white;
-  background-color: rgb(161, 48, 54);
+  background-color: rgb(173, 50, 46);
 }
 
 #menu-table td {
