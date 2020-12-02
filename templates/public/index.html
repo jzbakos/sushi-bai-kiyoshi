@@ -32,7 +32,7 @@
     {% if session.get('logged_in') and session['logged_in'] == True %}
     <a href="/menu" class="btn btn-dark my-2"
       ><img
-        src="../../../static/img/book-open-white.svg"
+        src="../../../static/img/icons/book-open-white.svg"
         alt="plus-circle"
         style="margin-right: 5px"
       />
@@ -44,7 +44,7 @@
       class="btn btn-dark my-2"
       style="max-width: 30%; min-width: 140px"
       ><img
-        src="../../../static/img/book-open-white.svg"
+        src="../../../static/img/icons/book-open-white.svg"
         alt="plus-circle"
         style="margin-right: 5px"
       />
@@ -54,7 +54,11 @@
       href="/login"
       class="btn btn-dark my-2"
       style="max-width: 30%; min-width: 140px"
-      >Login</a
+      ><img
+        src="../../../static/img/icons/log-in-white.svg"
+        alt="log-in"
+        style="margin-right: 5px"
+      />Login</a
     >
     {% endif %}
   </p>
