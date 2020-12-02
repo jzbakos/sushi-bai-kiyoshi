@@ -1,6 +1,12 @@
 import random
 from random import randint
 
+
+#####################################################
+# Used for generating fake data for the users table #
+#####################################################
+
+
 options_first_name = [
     "Josh",
     "Barry",
@@ -82,7 +88,3 @@ for i in range(20):
     )
 
     print(sql_query)
-
-sql_query = ""
-
-print(user_id)
