@@ -4,32 +4,6 @@ Orders{% endblock %} {% block partial %}
 <h1 class="display-3">Active Orders</h1>
 <h4 style="font-weight: 300">View active orders and mark them complete.</h4>
 <hr class="menu-title-hr" style="width: 95%; float: left" />
-<!-- Search form -->
-<div class="container-fluid" style="padding-left: 0; margin-bottom: 15px">
-  <form method="POST">
-    <input
-      class="form-control"
-      type="number"
-      name="input_search_order"
-      placeholder="Search Order #"
-      style="width: 30%; display: inline-block; margin: 0"
-    />
-    <button
-      id="btnSearchOrder"
-      type="submit"
-      class="btn btn-danger"
-      name="btn_search_order"
-      style="
-        display: inline-block;
-        margin-left: 5px;
-        padding-left: 20px;
-        padding-right: 20px;
-      "
-    >
-      Search
-    </button>
-  </form>
-</div>
 
 <div class="table-responsive" style="width: 95%">
   <table id="menu-table" class="table table-sm" style="background-color: white">

@@ -215,7 +215,7 @@ def dashboard():
 
 
 # Dashboard: order history route
-@app.route("/order_history")
+@app.route("/order_history", methods=["GET", "POST"])
 def order_history():
     db = mysql.connector.connect(
         user="b6a23f430401bc",
@@ -225,6 +225,16 @@ def order_history():
     )
 
     cursor = db.cursor()
+
+    if request.method == "POST" and request.form["input_search_order"] != "":
+        print("SEARCH: %s" % request.form["input_search_order"])
+        cursor.execute(
+            "SELECT * FROM orders WHERE order_id = '%s'"
+            % request.form["input_search_order"]
+        )
+
+        myresult = cursor.fetchall()
+        return render_template("public/dashboard/order_history.html", myresult=myresult)
 
     cursor.execute(
         "SELECT * FROM orders WHERE is_completed = 1 ORDER BY date_time_placed DESC"

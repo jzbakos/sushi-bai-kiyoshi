@@ -1,14 +1,24 @@
 {% extends 'public/templates/base.html' %} {% block title %}Profile{% endblock
 %} {% set active_page = "profile" %} {% block body %}
 
-<div id="register-panel" class="container">
+<div id="profile-panel" class="container">
   <div class="row">
     <div class="col">
       <h1 class="display-4 center-title">My Profile</h1>
       <hr />
-      <p><strong>Name:</strong> Josh Bakos</p>
-      <p><strong>Email:</strong> joshua.bakos@dcmail.ca</p>
-      <p><strong>Phone Number:</strong> 905 441 3682</p>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-2">
+        <p><strong>Name:</strong></p>
+        <p><strong>Email:</strong></p>
+        <p><strong>Phone:</strong></p>
+      </div>
+      <div class="col-10">
+        <p>{{session['user'][1]}} {{session['user'][2]}}</p>
+        <p>{{session['user'][3]}}</p>
+        <p>{{session['user'][4]}}</p>
+      </div>
     </div>
   </div>
 </div>
