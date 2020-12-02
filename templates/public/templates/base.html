@@ -45,6 +45,7 @@
             <li><a class="{{ 'nav-link active' if active_page == 'dashboard' else 'nav-link' }}" href="/dashboard">Dashboard</a></li>
             <li><a class="nav-link" href="/logout">Logout</a></li>
           {% elif session.get('logged_in') and session['logged_in'] == True %} 
+            <li><a class="{{ 'nav-link active' if active_page == 'profile' else 'nav-link' }}" href="/profile">Profile</a></li>
             <li><a class="nav-link" href="/logout">Logout</a></li>
           {% else %}
             <li class="nav-item">

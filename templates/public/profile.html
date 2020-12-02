@@ -1,28 +1,15 @@
-{% extends 'public/templates/base.html' %} {% block title %}Menu{% endblock %}
-{% set active_page = "menu" %} {% block body %}
+{% extends 'public/templates/base.html' %} {% block title %}Profile{% endblock
+%} {% set active_page = "profile" %} {% block body %}
 
-<div class="container">
+<div id="register-panel" class="container">
   <div class="row">
     <div class="col">
-      <h1 class="display-3">My Profile</h1>
+      <h1 class="display-4 center-title">My Profile</h1>
       <hr />
-
-      <div class="col-md-10 col-lg-8">
-        <div class="intro">
-          <h2><b>Name Here</b></h2>
-          <hr />
-          <h5>Account Info</h5>
-          <p><b>EMAIL : </b>email@exmaple.com</p>
-          <p><b>PHONE NUMBER : </b>(999) 999-999</p>
-
-          <button type="button" class="btn btn-primary">Your Orders</button>
-          <button type="button" class="btn btn-secondary">
-            Account Settings
-          </button>
-        </div>
-      </div>
+      <p><strong>Name:</strong> Josh Bakos</p>
+      <p><strong>Email:</strong> joshua.bakos@dcmail.ca</p>
+      <p><strong>Phone Number:</strong> 905 441 3682</p>
     </div>
   </div>
 </div>
-
 {% endblock %}
