@@ -237,7 +237,7 @@ def order_history():
         return render_template("public/dashboard/order_history.html", myresult=myresult)
 
     cursor.execute(
-        "SELECT * FROM orders WHERE is_completed = 1 ORDER BY date_time_placed DESC"
+        "SELECT * FROM orders WHERE is_completed = 1 ORDER BY date_time_completed DESC"
     )
 
     myresult = cursor.fetchall()
@@ -339,16 +339,31 @@ def active_orders():
 
     cursor = db.cursor()
     if request.method == "POST":
-        menu_item_id = request.form["btn_complete"]
-        cursor.execute(
-            "UPDATE orders SET is_completed = 1 WHERE order_id = %s" % menu_item_id
-        )
-        date_time = time.strftime("%Y-%m-%d %H:%M:%S")
-        cursor.execute(
-            "UPDATE orders SET date_time_completed = %s WHERE order_id = %s",
-            (date_time, menu_item_id),
-        )
-        db.commit()
+        if "btn_complete" in request.form:
+            menu_item_id = request.form["btn_complete"]
+            cursor.execute(
+                "UPDATE orders SET is_completed = 1 WHERE order_id = %s" % menu_item_id
+            )
+            date_time = time.strftime("%Y-%m-%d %H:%M:%S")
+            cursor.execute(
+                "UPDATE orders SET date_time_completed = %s WHERE order_id = %s",
+                (date_time, menu_item_id),
+            )
+            db.commit()
+        elif "btn_view" in request.form:
+            print("view button")
+            order_id = request.form["btn_view"]
+            session["order_details_id"] = order_id
+            cursor = db.cursor()
+
+            cursor.execute(
+                "SELECT menu_item_order.*, menu_items.* FROM  menu_items, menu_item_order WHERE menu_item_order.menu_item_id = menu_items.menu_item_id AND menu_item_order.order_id = '%s'"
+                % session["order_details_id"]
+            )
+            myresult = cursor.fetchall()
+            return render_template(
+                "public/dashboard/order_details.html", myresult=myresult
+            )
 
     cursor.execute(
         "SELECT * FROM orders WHERE is_completed = 0 ORDER BY date_time_placed ASC"
@@ -357,6 +372,28 @@ def active_orders():
     myresult = cursor.fetchall()
     db.close()
     return render_template("public/dashboard/active_orders.html", myresult=myresult)
+
+
+# Dashboard: order details route
+@app.route("/order_details", methods=["GET", "POST"])
+def order_details():
+    db = mysql.connector.connect(
+        user="b6a23f430401bc",
+        password="4fdd2d42",
+        host="us-cdbr-east-02.cleardb.com",
+        database="heroku_a907c14370f5a87",
+    )
+    print("order id %s" % session["order_details_id"])
+    cursor = db.cursor()
+
+    cursor.execute(
+        "SELECT menu_item_order.*, menu_items.* FROM  menu_items, menu_item_order WHERE menu_item_order.menu_item_id = menu_items.menu_item_id AND menu_item_order.order_id = '%s'"
+        % session["order_details_id"]
+    )
+
+    myresult = cursor.fetchall()
+
+    return render_template("public/dashboard/order_details.html", myresult=myresult)
 
 
 # Profile route

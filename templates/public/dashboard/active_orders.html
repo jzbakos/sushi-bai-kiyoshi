@@ -34,6 +34,15 @@ Orders{% endblock %} {% block partial %}
         <td>
           <form method="POST">
             <button
+              id="btnView"
+              type="submit"
+              class="btn btn-danger"
+              name="btn_view"
+              value="{{myresult[count|length][j]}}"
+            >
+              View Order
+            </button>
+            <button
               id="btnComplete"
               type="submit"
               class="btn btn-danger"
