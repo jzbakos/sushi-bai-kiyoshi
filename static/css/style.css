@@ -50,16 +50,167 @@ body {
   min-height: 5%;
 }
 
-/* #big-img-container {
-  background: url("../../static/img/sushi-bg.jpg") no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  width: 100%;
-  margin: 0;
+/*
+*
+* BUTTONS
+*
+*/
+
+.close-button {
+  overflow: hidden;
+  color: #fff;
+  background-color: #b60000;
+  position: relative;
+  padding: 3px;
+  border-radius: 4px;
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+.close-button > .text {
+  padding-right: 1.5em;
+  display: block;
+  position: relative;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  transition: all 0.15s ease-out;
+  font-weight: 700;
+  border-right: 2px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 1px;
+  margin-right: 3em;
+  font-size: 13px;
+}
+
+.close-button .cross::after,
+.close-button .cross::before {
+  display: block;
+  background-color: #fff;
+  margin-left: auto;
+  width: 1em;
+  left: 0;
+  height: 0.2em;
+  position: absolute;
+  transition: all 0.15s ease-out;
+  content: "";
+  right: 0;
+  margin-right: auto;
+}
+
+.close-button .cross::after {
+  transform: rotate(45deg);
+}
+
+.close-button .cross {
+  margin-top: -2px;
+}
+
+.close-button .cross::before {
+  transform: rotate(-45deg);
+}
+
+.close-button:hover {
+  background-color: #c44346;
+}
+
+.close-button > .icons {
+  display: flex;
+  width: 3em;
   height: 100%;
-} */
+  position: absolute;
+  flex-direction: column;
+  top: 0;
+  transition: all 0.15s ease-out;
+  align-items: center;
+  right: 0;
+  justify-content: center;
+}
+
+.close-button:hover .text {
+  transform: translateX(calc(-100% - 3em));
+}
+
+.close-button:hover .icons {
+  width: 100%;
+  transform: scale(1.3);
+}
+
+.add-button {
+  overflow: hidden;
+  color: #fff;
+  background-color: #363636;
+  position: relative;
+  padding: 3px;
+  border-radius: 4px;
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+.add-button > .text {
+  padding-right: 1.5em;
+  display: block;
+  position: relative;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  transition: all 0.15s ease-out;
+  font-weight: 700;
+  border-right: 2px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 1px;
+  margin-right: 3em;
+  font-size: 13px;
+}
+
+.add-button .cross::after,
+.add-button .cross::before {
+  display: block;
+  background-color: #fff;
+  margin-left: auto;
+  width: 1em;
+  left: 0;
+  height: 0.2em;
+  position: absolute;
+  transition: all 0.15s ease-out;
+  content: "";
+  right: 0;
+  margin-right: auto;
+}
+
+.add-button .cross {
+  margin-top: -2px;
+}
+
+.add-button .cross::before {
+  transform: rotate(-90deg);
+}
+
+.add-button:hover {
+  background-color: #36b34b;
+}
+
+.add-button > .icons {
+  display: flex;
+  width: 3em;
+  height: 100%;
+  position: absolute;
+  flex-direction: column;
+  top: 0;
+  transition: all 0.15s ease-out;
+  align-items: center;
+  right: 0;
+  justify-content: center;
+}
+
+.add-button:hover .text {
+  transform: translateX(calc(-100% - 3em));
+}
+
+.add-button:hover .icons {
+  width: 100%;
+  transform: scale(1.3);
+}
+/*
+*/
 
 #big-img {
   width: 100%;
@@ -111,9 +262,7 @@ body {
 }
 
 #menu-table td {
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-  padding-top: 10px !important;
+  padding: 10px !important;
 }
 
 #menu-table th {

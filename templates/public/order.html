@@ -26,17 +26,22 @@
             <button
               id="btnRemoveFromOrder"
               type="submit"
-              class="btn btn-danger"
+              class="btn close-button"
               name="btn_remove_from_order"
               value="{{order[count|length][j]}}"
               onclick="alertMessage('success', 'Removed from order!'); "
             >
-              <img
+              <span class="text">Remove</span>
+
+              <div class="icons">
+                <div class="cross"></div>
+                <div class="check"></div>
+              </div>
+              <!-- <img
                 src="../../../static/img/icons/x-circle.svg"
                 alt="x-circle"
                 style="margin-right: 5px"
-              />
-              Remove
+              /> -->
             </button>
           </form>
         </td>
