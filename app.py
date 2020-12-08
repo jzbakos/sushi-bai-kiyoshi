@@ -85,11 +85,38 @@ def order():
 
         if "btn_place_order" in request.form:
             if session["current_order"]:
+                date_time = time.strftime("%Y-%m-%d %H:%M:%S")
+                cursor.execute(
+                    "INSERT INTO orders (order_id, details, last_Name, is_completed, date_time_placed, date_time_completed, user_id, phone_number)"
+                    + "VALUES (NULL, NULL, '', 0, '%s', NULL, NULL, NULL);" % date_time
+                )
+                db.commit()
+                cursor.execute(
+                    "SELECT order_id FROM orders ORDER BY order_id DESC LIMIT 0,1 "
+                )
+                order_id = cursor.fetchall()
+                print(order_id[0][0])
+                order = session["current_order"]
+
+                for item in order:
+                    cursor.execute(
+                        "SELECT menu_item_id FROM menu_items WHERE name = '%s'" % item
+                    )
+                    menu_item_id = cursor.fetchall()
+                    cursor.execute(
+                        "INSERT INTO menu_item_order (menu_item_id, order_id, quantity)"
+                        + "VALUES (%s, %s, 1);",
+                        (menu_item_id[0][0], order_id[0][0]),
+                    )
+                    db.commit()
+
                 print("OLD SESSION: ", session["current_order"])
                 new_order = []
                 session["current_order"] = new_order
                 print("NEW SESSION: ", session["current_order"])
                 message = "Order Placed!"
+
+                db.close()
                 return render_template("public/index.html", message=message)
             else:
                 error = "ERROR: You don't have any items in your order!"
